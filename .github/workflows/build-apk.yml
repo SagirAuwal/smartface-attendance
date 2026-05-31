@@ -30,6 +30,17 @@ jobs:
           cd mobile
           flutter create --platforms=android .
 
+      - name: Inject Internet Permission in AndroidManifest
+        run: |
+          python3 -c "
+          path = 'mobile/android/app/src/main/AndroidManifest.xml'
+          with open(path, 'r') as f: text = f.read()
+          if 'android.permission.INTERNET' not in text:
+              text = text.replace('<application', '<uses-permission android:name=\"android.permission.INTERNET\"/>\n    <application')
+              with open(path, 'w') as f: f.write(text)
+              print('Successfully injected internet permission!')
+          "
+
       - name: Install dependencies
         run: |
           cd mobile
