@@ -15,6 +15,8 @@ import {
   Trash2
 } from "lucide-react";
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+
 export default function SettingsPage() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -217,7 +219,7 @@ export default function SettingsPage() {
                 <div className="relative group">
                   {currentUser.profile_picture ? (
                     <img
-                      src={`http://localhost:8080${currentUser.profile_picture}`}
+                      src={`${BACKEND_URL}${currentUser.profile_picture}`}
                       alt={currentUser.fullname}
                       className="w-24 h-24 rounded-full object-cover border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300"
                     />

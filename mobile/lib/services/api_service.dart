@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  static const String _defaultUrl = "http://10.0.2.2:8080"; // Android Emulator default host loopback IP
+  static const String _defaultUrl = "https://sageerbh-smartface-backend.hf.space"; // Production backend URL
   
   static Future<String> getBaseUrl() async {
     final prefs = await SharedPreferences.getInstance();

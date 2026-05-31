@@ -6,7 +6,7 @@ WORKDIR /code
 # Install system dependencies (needed for OpenCV / image handling if any)
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 

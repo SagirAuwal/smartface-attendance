@@ -19,6 +19,8 @@ import {
 import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -181,7 +183,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className={`flex items-center gap-3 px-2 ${sidebarCollapsed ? "justify-center mb-2" : "mb-4"}`}>
             {currentUser.profile_picture ? (
               <img
-                src={`http://localhost:8080${currentUser.profile_picture}`}
+                src={`${BACKEND_URL}${currentUser.profile_picture}`}
                 alt={currentUser.fullname}
                 className="w-9 h-9 rounded-full object-cover border border-cyan-500/30 flex-shrink-0"
               />
@@ -265,7 +267,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="flex items-center gap-3 mb-4 px-2">
                 {currentUser.profile_picture ? (
                   <img
-                    src={`http://localhost:8080${currentUser.profile_picture}`}
+                    src={`${BACKEND_URL}${currentUser.profile_picture}`}
                     alt={currentUser.fullname}
                     className="w-9 h-9 rounded-full object-cover border border-cyan-500/30 flex-shrink-0"
                   />
@@ -327,7 +329,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {/* Display user initials */}
             {currentUser.profile_picture ? (
               <img
-                src={`http://localhost:8080${currentUser.profile_picture}`}
+                src={`${BACKEND_URL}${currentUser.profile_picture}`}
                 alt={currentUser.fullname}
                 className="w-10 h-10 rounded-xl object-cover border border-cyan-500/30 glow-cyan-sm"
               />
