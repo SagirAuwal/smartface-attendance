@@ -26,6 +26,11 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
 
+      - name: Recreate Android platform files
+        run: |
+          cd mobile
+          flutter create --platforms=android .
+
       - name: Install dependencies
         run: |
           cd mobile
