@@ -13,6 +13,7 @@ class ApiService {
 
   static Future<void> setBaseUrl(String url) async {
     final prefs = await SharedPreferences.getInstance();
+    url = url.trim();
     // Trim trailing slash if present
     if (url.endsWith('/')) {
       url = url.substring(0, url.length - 1);
@@ -55,7 +56,8 @@ class ApiService {
         final err = json.decode(response.body);
         throw Exception(err['detail'] ?? 'Invalid credentials');
       } catch (_) {
-        throw Exception('Connection failed. Verify server URL/IP.');
+        final bodySnippet = response.body.length > 50 ? response.body.substring(0, 50) : response.body;
+        throw Exception('Server Error (${response.statusCode}): $bodySnippet');
       }
     }
     
