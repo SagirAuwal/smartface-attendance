@@ -1,0 +1,44 @@
+# Python backend ignores
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.pytest_cache/
+backend/app/static/uploads/
+backend/*.db
+backend/*.log
+
+# Next.js frontend ignores
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Flutter mobile ignores
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+mobile/flutter_export_environment.sh
+mobile/*_android.iml
+mobile/*.iml
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/key.properties
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh
+
+# General ignores
+.DS_Store
+*.log
+Thumbs.db
+.env
