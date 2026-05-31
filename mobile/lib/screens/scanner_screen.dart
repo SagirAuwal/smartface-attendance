@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:typed_data';
 import 'package:camera/camera.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../services/api_service.dart';
@@ -260,7 +261,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                               const Text(
                                 "COURSE MODULE BLOCK",
                                 style: TextStyle(
-                                  color: Colors.slate400,
+                                  color: Color(0xFF94A3B8),
                                   fontSize: 10,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.5,
@@ -318,12 +319,12 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.videocam_off_outlined, color: Colors.slate600, size: 48),
-                                      SizedBox(height: 8),
-                                      Text(
-                                        "Camera Access Blocked",
-                                        style: TextStyle(color: Colors.slate500, fontSize: 12),
-                                      ),
+                                        const Icon(Icons.videocam_off_outlined, color: Color(0xFF475569), size: 48),
+                                        const SizedBox(height: 8),
+                                        const Text(
+                                          "Camera Access Blocked",
+                                          style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
+                                        ),
                                     ],
                                   ),
                                 ),
@@ -362,17 +363,17 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                       const SizedBox(height: 24),
 
                       // Scanning Action Trigger Button
-                      ElevatedButton.styleFrom(
-                        backgroundColor: primaryColor,
-                        foregroundColor: const Color(0xFF0F172A),
-                        padding: const EdgeInsets.symmetric(vertical: 18),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        elevation: 4,
-                      ).let((buttonStyle) => ElevatedButton(
+                      ElevatedButton(
                         onPressed: (_processingScan || !_cameraInitialized) ? null : _handleScanFace,
-                        style: buttonStyle,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryColor,
+                          foregroundColor: const Color(0xFF0F172A),
+                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          elevation: 4,
+                        ),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -388,7 +389,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                             ),
                           ],
                         ),
-                      )),
+                      ),
                     ],
                   ),
                 );
@@ -470,7 +471,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
               Text(
                 "Matric No: $_matchedMatric",
                 style: const TextStyle(
-                  color: Colors.slate400,
+                  color: Color(0xFF94A3B8),
                   fontSize: 13,
                   fontFamily: 'monospace',
                 ),
@@ -481,7 +482,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                   children: [
                     const Text(
                       "Biometric Match Score: ",
-                      style: TextStyle(color: Colors.slate500, fontSize: 11),
+                      style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
                     ),
                     Text(
                       "${(_confidence! * 100).toStringAsFixed(1)}%",

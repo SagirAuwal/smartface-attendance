@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 32,
-                      fontWeight: FontWeight.extrabold,
+                      fontWeight: FontWeight.w800,
                       color: Colors.white,
                       letterSpacing: -0.5,
                     ),
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.slate400,
+                      color: Color(0xFF94A3B8),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -193,8 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: const TextStyle(color: Colors.white, fontSize: 14),
                             decoration: InputDecoration(
                               labelText: "Email Address",
-                              labelStyle: const TextStyle(color: Colors.slate400, fontSize: 13),
-                              prefixIcon: const Icon(Icons.mail_outline, color: Colors.slate400, size: 20),
+                              labelStyle: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+                              prefixIcon: const Icon(Icons.mail_outline, color: Color(0xFF94A3B8), size: 20),
                               filled: true,
                               fillColor: backgroundColor.withOpacity(0.4),
                               border: OutlineInputBorder(
@@ -222,8 +222,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: const TextStyle(color: Colors.white, fontSize: 14),
                             decoration: InputDecoration(
                               labelText: "Password",
-                              labelStyle: const TextStyle(color: Colors.slate400, fontSize: 13),
-                              prefixIcon: const Icon(Icons.lock_outline, color: Colors.slate400, size: 20),
+                              labelStyle: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+                              prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF94A3B8), size: 20),
                               filled: true,
                               fillColor: backgroundColor.withOpacity(0.4),
                               border: OutlineInputBorder(
@@ -295,11 +295,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         headerBuilder: (context, isOpen) {
                           return const ListTile(
                             dense: true,
-                            leading: Icon(Icons.settings, color: Colors.slate400, size: 18),
-                            title: Text(
+                            leading: const Icon(Icons.settings, color: Color(0xFF94A3B8), size: 18),
+                            title: const Text(
                               "Connection Settings",
                               style: TextStyle(
-                                color: Colors.slate300,
+                                color: Color(0xFFCBD5E1),
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -313,8 +313,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               const Text(
                                 "Define the host address of the computer running the FastAPI server. e.g. 192.168.1.100:8080",
-                                style: TextStyle(
-                                  color: Colors.slate400,
+                                style: const TextStyle(
+                                  color: Color(0xFF94A3B8),
                                   fontSize: 11,
                                   height: 1.4,
                                 ),
@@ -325,7 +325,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: const TextStyle(color: Colors.white, fontSize: 13, fontFamily: 'monospace'),
                                 decoration: InputDecoration(
                                   labelText: "Server Base URL",
-                                  labelStyle: const TextStyle(color: Colors.slate400, fontSize: 12),
+                                  labelStyle: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
                                   filled: true,
                                   fillColor: backgroundColor.withOpacity(0.3),
                                   border: OutlineInputBorder(

@@ -12,7 +12,7 @@ void main() {
   ]);
   
   // Set translucent status bar
-  SystemChrome.setSystemUIOverlayStyle(const SystemOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
   ));
