@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 export default function Lecturers() {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [lecturers, setLecturers] = useState<User[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,7 @@ export default function Lecturers() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
+    setCurrentUser(api.getCurrentUser());
     fetchLecturers();
   }, []);
 
@@ -189,13 +191,15 @@ export default function Lecturers() {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button
-                        onClick={() => handleDelete(lecturer.id, lecturer.fullname)}
-                        className="text-red-500 hover:text-red-400 font-medium cursor-pointer inline-flex items-center gap-1 transition-all"
-                      >
-                        <Trash2 className="w-4.5 h-4.5" />
-                        Delete
-                      </button>
+                      {currentUser?.role === "admin" && (
+                        <button
+                          onClick={() => handleDelete(lecturer.id, lecturer.fullname)}
+                          className="text-red-500 hover:text-red-400 font-medium cursor-pointer inline-flex items-center gap-1 transition-all"
+                        >
+                          <Trash2 className="w-4.5 h-4.5" />
+                          Delete
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}

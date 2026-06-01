@@ -201,10 +201,10 @@ def get_lecturers(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user)
 ):
-    if current_user.role != "admin":
+    if current_user.role not in ["admin", "sub_admin"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only administrators can access the lecturer list."
+            detail="Only administrators and sub-administrators can access the lecturer list."
         )
     lecturers = db.query(models.User).filter(models.User.role == "lecturer").all()
     return lecturers
@@ -215,10 +215,10 @@ def create_lecturer(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user)
 ):
-    if current_user.role != "admin":
+    if current_user.role not in ["admin", "sub_admin"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only administrators can create lecturers."
+            detail="Only administrators and sub-administrators can create lecturers."
         )
         
     db_user = db.query(models.User).filter(models.User.email == lecturer_in.email).first()
@@ -288,13 +288,53 @@ def delete_lecturer(
     return {"status": "success", "message": "Lecturer account and associated courses deleted successfully."}
 
 # ==========================================
+# SUB-ADMIN MANAGEMENT ENDPOINTS
+# ==========================================
+
+@router.get("/sub-admins", response_model=List[schemas.UserResponse])
+def get_sub_admins(
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user)
+):
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only administrators can access the sub-admin list."
+        )
+    sub_admins = db.query(models.User).filter(models.User.role == "sub_admin").all()
+    return sub_admins
+
+@router.delete("/sub-admins/{sub_admin_id}")
+def delete_sub_admin(
+    sub_admin_id: int,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user)
+):
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only administrators can delete sub-admins."
+        )
+        
+    sub_admin = db.query(models.User).filter(models.User.id == sub_admin_id, models.User.role == "sub_admin").first()
+    if not sub_admin:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Sub-admin not found."
+        )
+        
+    db.delete(sub_admin)
+    db.commit()
+    return {"status": "success", "message": "Sub-admin account deleted successfully."}
+
+# ==========================================
 # STUDENT MANAGEMENT ENDPOINTS
 # ==========================================
 
 @router.get("/students", response_model=List[schemas.StudentResponse])
 def get_students(db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
-    # Admin and lecturers can see students. Students can see only themselves.
-    if current_user.role in ["admin", "lecturer"]:
+    # Admin, sub-admin and lecturers can see students. Students can see only themselves.
+    if current_user.role in ["admin", "sub_admin", "lecturer"]:
         students = db.query(models.Student).all()
     else:
         students = db.query(models.Student).filter(models.Student.user_id == current_user.id).all()
@@ -302,7 +342,7 @@ def get_students(db: Session = Depends(get_db), current_user: models.User = Depe
 
 @router.post("/students", response_model=schemas.StudentResponse)
 def create_student(student_in: schemas.StudentCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
-    if current_user.role not in ["admin", "lecturer"]:
+    if current_user.role not in ["admin", "sub_admin", "lecturer"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to create students"
@@ -354,7 +394,7 @@ async def register_face(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user)
 ):
-    if current_user.role not in ["admin", "lecturer"]:
+    if current_user.role not in ["admin", "sub_admin", "lecturer"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to register student faces"
@@ -413,7 +453,7 @@ def delete_student(
 ):
     print(f"[DEBUG DELETE] Attempting to delete student_id={student_id} (type={type(student_id)}), current_user.email={current_user.email}")
     
-    if current_user.role not in ["admin", "lecturer"]:
+    if current_user.role not in ["admin", "sub_admin", "lecturer"]:
         print(f"[DEBUG DELETE] User {current_user.email} with role {current_user.role} is not authorized.")
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -462,7 +502,7 @@ def get_courses(db: Session = Depends(get_db), current_user: models.User = Depen
 
 @router.post("/courses", response_model=schemas.CourseResponse)
 def create_course(course_in: schemas.CourseCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
-    if current_user.role not in ["admin", "lecturer"]:
+    if current_user.role not in ["admin", "sub_admin", "lecturer"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to create courses"
@@ -637,7 +677,7 @@ def manual_mark_attendance(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user)
 ):
-    if current_user.role not in ["admin", "lecturer"]:
+    if current_user.role not in ["admin", "sub_admin", "lecturer"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not authorized to manually mark attendance"

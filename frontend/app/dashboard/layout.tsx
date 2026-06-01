@@ -84,19 +84,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       name: "Face Scanner",
       href: "/dashboard/attendance",
       icon: Camera,
-      roles: ["admin", "lecturer"], // Only staff can mark face attendance
+      roles: ["admin", "sub_admin", "lecturer"], // Only staff can mark face attendance
     },
     {
       name: "Students",
       href: "/dashboard/students",
       icon: Users,
-      roles: ["admin", "lecturer"], // Staff manages students
+      roles: ["admin", "sub_admin", "lecturer"], // Staff manages students
     },
     {
       name: "Lecturers",
       href: "/dashboard/lecturers",
       icon: ShieldCheck,
-      roles: ["admin"], // Only admin can manage lecturers
+      roles: ["admin", "sub_admin"], // Admin and sub-admin can manage lecturers
     },
     {
       name: "Attendance Reports",

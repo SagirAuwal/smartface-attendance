@@ -38,6 +38,8 @@ export default function SettingsPage() {
   const [adminSaving, setAdminSaving] = useState(false);
   const [adminError, setAdminError] = useState("");
   const [adminSuccess, setAdminSuccess] = useState("");
+  const [subAdmins, setSubAdmins] = useState<User[]>([]);
+  const [loadingSubAdmins, setLoadingSubAdmins] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -46,6 +48,13 @@ export default function SettingsPage() {
       setCurrentUser(user);
       setFullname(user.fullname);
       setEmail(user.email);
+      if (user.role === "admin") {
+        setLoadingSubAdmins(true);
+        api.getSubAdmins()
+          .then(data => setSubAdmins(data))
+          .catch(err => console.error("Failed to fetch sub-admins", err))
+          .finally(() => setLoadingSubAdmins(false));
+      }
     }
   }, []);
 
@@ -156,7 +165,7 @@ export default function SettingsPage() {
       await api.signup(
         adminFullname,
         adminEmail,
-        "admin",
+        "sub_admin",
         adminPassword
       );
 
@@ -164,10 +173,33 @@ export default function SettingsPage() {
       setAdminFullname("");
       setAdminEmail("");
       setAdminPassword("");
+
+      // Refresh list
+      const data = await api.getSubAdmins();
+      setSubAdmins(data);
     } catch (err: any) {
       setAdminError(err.message || "Failed to create sub-administrator.");
     } finally {
       setAdminSaving(false);
+    }
+  };
+
+  const handleDeleteSubAdmin = async (subAdminId: number, name: string) => {
+    if (window.confirm(`Are you sure you want to permanently delete sub-administrator '${name}'?`)) {
+      setLoadingSubAdmins(true);
+      setAdminError("");
+      setAdminSuccess("");
+      try {
+        await api.deleteSubAdmin(subAdminId);
+        setAdminSuccess(`Sub-Administrator ${name} deleted successfully!`);
+        // Refresh list
+        const data = await api.getSubAdmins();
+        setSubAdmins(data);
+      } catch (err: any) {
+        setAdminError(err.message || "Failed to delete sub-administrator.");
+      } finally {
+        setLoadingSubAdmins(false);
+      }
     }
   };
 
@@ -455,6 +487,69 @@ export default function SettingsPage() {
         )}
 
       </div>
+
+      {/* Sub-Admins list */}
+      {isAdmin && (
+        <div className="glass-card rounded-2xl border border-[var(--border)] overflow-hidden shadow-xl bg-[var(--card)]/50 backdrop-blur-md">
+          <div className="p-6 border-b border-[var(--border)]/45 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/30">
+                <ShieldCheck className="w-5 h-5 text-purple-400" />
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-[var(--foreground)]">Registered Sub-Administrators</h2>
+                <p className="text-xs text-[var(--muted)]">Manage secondary administrator accounts and their privileges</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-6">
+            {loadingSubAdmins ? (
+              <div className="py-8 text-center text-[var(--muted)]">
+                <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-purple-500" />
+                <span className="text-xs font-mono">Querying sub-admins list...</span>
+              </div>
+            ) : subAdmins.length === 0 ? (
+              <div className="py-8 text-center text-[var(--muted)] text-sm">
+                No sub-administrators registered yet. Use the form above to add one.
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr className="bg-[var(--card)]/30 border-b border-[var(--border)] font-semibold uppercase tracking-wider text-[var(--muted)]">
+                      <th className="px-4 py-3">Full Name</th>
+                      <th className="px-4 py-3">Email</th>
+                      <th className="px-4 py-3">Registered Date</th>
+                      <th className="px-4 py-3 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[var(--border)]/40">
+                    {subAdmins.map((subAdmin) => (
+                      <tr key={subAdmin.id} className="hover:bg-[var(--card)]/10 transition-colors">
+                        <td className="px-4 py-3.5 font-medium text-[var(--foreground)]">{subAdmin.fullname}</td>
+                        <td className="px-4 py-3.5 text-[var(--muted)] font-mono">{subAdmin.email}</td>
+                        <td className="px-4 py-3.5 text-[var(--muted)]">
+                          {new Date(subAdmin.created_at).toLocaleDateString([], { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </td>
+                        <td className="px-4 py-3.5 text-right">
+                          <button
+                            onClick={() => handleDeleteSubAdmin(subAdmin.id, subAdmin.fullname)}
+                            className="text-red-500 hover:text-red-400 font-medium cursor-pointer inline-flex items-center gap-1 transition-all"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

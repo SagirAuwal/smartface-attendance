@@ -3,7 +3,7 @@ import hashlib
 import random
 import io
 from typing import List, Tuple, Optional
-from PIL import Image
+from PIL import Image, ImageOps
 from app.core.config import settings
 
 logger = logging.getLogger("smartface.ai")
@@ -64,8 +64,10 @@ class AIEngine:
             import torch
             from torchvision import transforms
 
-            # Convert bytes to PIL Image, then to OpenCV numpy array
-            image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+            # Convert bytes to PIL Image, auto-transpose EXIF rotation, then convert to OpenCV numpy array
+            image = Image.open(io.BytesIO(image_bytes))
+            image = ImageOps.exif_transpose(image).convert("RGB")
+            
             cv_img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
             gray = cv2.cvtColor(cv_img, cv2.COLOR_BGR2GRAY)
             
@@ -80,8 +82,18 @@ class AIEngine:
             # Take the largest face (assuming it's the subject)
             x, y, w, h = max(faces, key=lambda f: f[2] * f[3])
             
+            # Apply padding margin around the crop box to capture broader face context (e.g. 10% of width/height)
+            margin_x = int(w * 0.1)
+            margin_y = int(h * 0.1)
+            
+            img_w, img_h = image.size
+            crop_x1 = max(0, x - margin_x)
+            crop_y1 = max(0, y - margin_y)
+            crop_x2 = min(img_w, x + w + margin_x)
+            crop_y2 = min(img_h, y + h + margin_y)
+            
             # Crop and align face
-            face_crop = image.crop((x, y, x + w, y + h))
+            face_crop = image.crop((crop_x1, crop_y1, crop_x2, crop_y2))
             
             # Preprocess face for FaceNet: resize to 160x160 and convert to tensor
             preprocess = transforms.Compose([

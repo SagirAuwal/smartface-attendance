@@ -17,6 +17,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
   List<CameraDescription> _cameras = [];
   CameraController? _cameraController;
   bool _cameraInitialized = false;
+  CameraLensDirection _currentLensDirection = CameraLensDirection.front;
   
   // Roster and active options
   List<Map<String, dynamic>> _courses = [];
@@ -77,13 +78,24 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
         return;
       }
       
-      // Default to front-facing camera for self check-in or lecturer selfie scans, fallback to back camera
+      // Try to select camera matching the current lens direction
       CameraDescription selectedCamera = _cameras.first;
+      bool foundMatchingLens = false;
       for (var camera in _cameras) {
-        if (camera.lensDirection == CameraLensDirection.front) {
+        if (camera.lensDirection == _currentLensDirection) {
           selectedCamera = camera;
+          foundMatchingLens = true;
           break;
         }
+      }
+      
+      if (!foundMatchingLens) {
+        selectedCamera = _cameras.first;
+        _currentLensDirection = selectedCamera.lensDirection;
+      }
+
+      if (_cameraController != null) {
+        await _cameraController!.dispose();
       }
 
       _cameraController = CameraController(
@@ -104,6 +116,27 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
         _scanResultType = "error";
       });
     }
+  }
+
+  Future<void> _toggleCamera() async {
+    if (_cameras.length < 2) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No alternative camera lens available.')),
+      );
+      return;
+    }
+    
+    setState(() {
+      _cameraInitialized = false;
+    });
+    
+    if (_currentLensDirection == CameraLensDirection.front) {
+      _currentLensDirection = CameraLensDirection.back;
+    } else {
+      _currentLensDirection = CameraLensDirection.front;
+    }
+    
+    await _initializeCamera();
   }
 
   Future<void> _fetchCourses() async {
@@ -360,6 +393,38 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                                       ),
                                     );
                                   },
+                                ),
+                              
+                              // Camera Switch Toggle Button Overlay (Glassmorphic design)
+                              if (_cameraInitialized && _cameras.length > 1 && !_processingScan)
+                                Positioned(
+                                  top: 16,
+                                  right: 16,
+                                  child: Material(
+                                    color: Colors.black.withOpacity(0.5),
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: _toggleCamera,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.white.withOpacity(0.2),
+                                            width: 1,
+                                          ),
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        child: Icon(
+                                          _currentLensDirection == CameraLensDirection.front
+                                              ? Icons.camera_rear
+                                              : Icons.camera_front,
+                                          color: primaryColor,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               
                               if (_processingScan)

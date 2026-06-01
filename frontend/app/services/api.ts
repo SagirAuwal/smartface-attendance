@@ -4,7 +4,7 @@ export interface User {
   id: number;
   fullname: string;
   email: string;
-  role: "admin" | "lecturer" | "student";
+  role: "admin" | "sub_admin" | "lecturer" | "student";
   department?: string;
   profile_picture?: string;
   created_at: string;
@@ -384,6 +384,31 @@ class ApiService {
     });
     if (!response.ok) {
       await this.handleError(response, "Failed to delete lecturer");
+    }
+    return response.json();
+  }
+
+  // ==========================================
+  // SUB-ADMINS
+  // ==========================================
+
+  async getSubAdmins(): Promise<User[]> {
+    const response = await fetch(`${API_BASE_URL}/sub-admins`, {
+      headers: this.getHeaders(),
+    });
+    if (!response.ok) {
+      await this.handleError(response, "Failed to fetch sub-admins list");
+    }
+    return response.json();
+  }
+
+  async deleteSubAdmin(subAdminId: number): Promise<any> {
+    const response = await fetch(`${API_BASE_URL}/sub-admins/${subAdminId}`, {
+      method: "DELETE",
+      headers: this.getHeaders(),
+    });
+    if (!response.ok) {
+      await this.handleError(response, "Failed to delete sub-admin");
     }
     return response.json();
   }

@@ -1,7 +1,7 @@
 # Python backend ignores
 backend/venv/
-backend/__pycache__/
-backend/*.pyc
+**/__pycache__/
+**/*.pyc
 backend/*.pyo
 backend/*.pyd
 backend/.pytest_cache/
