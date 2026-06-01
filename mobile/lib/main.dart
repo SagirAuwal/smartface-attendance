@@ -30,13 +30,12 @@ class SmartFaceApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        primaryColor: const Color(0xFF06B6D4),
-        scaffoldBackgroundColor: const Color(0xFF0F172A),
+        primaryColor: const Color(0xFFD4AF37),
+        scaffoldBackgroundColor: const Color(0xFF0B132B),
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF06B6D4),
-          secondary: Color(0xFF3B82F6),
-          background: Color(0xFF0F172A),
-          surface: Color(0xFF1E293B),
+          primary: Color(0xFFD4AF37),
+          secondary: Color(0xFF3A506B),
+          surface: Color(0xFF1C2541),
           error: Color(0xFFEF4444),
         ),
         useMaterial3: true,

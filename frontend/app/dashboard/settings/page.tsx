@@ -174,7 +174,7 @@ export default function SettingsPage() {
   if (!mounted || !currentUser) {
     return (
       <div className="flex justify-center items-center py-20 text-[var(--muted)]">
-        <Loader2 className="w-8 h-8 animate-spin text-cyan-500 mr-2" />
+        <Loader2 className="w-8 h-8 animate-spin text-primary-500 mr-2" />
         <span className="text-sm font-mono">Loading settings config...</span>
       </div>
     );
@@ -189,8 +189,8 @@ export default function SettingsPage() {
         {/* Profile Settings Card */}
         <div className="glass-card rounded-2xl border border-[var(--border)] overflow-hidden shadow-xl bg-[var(--card)]/50 backdrop-blur-md flex flex-col">
           <div className="p-6 border-b border-[var(--border)]/40 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/30">
-              <UserIcon className="w-5 h-5 text-cyan-400" />
+            <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center border border-primary-500/30">
+              <UserIcon className="w-5 h-5 text-primary-400" />
             </div>
             <div>
               <h2 className="text-base font-bold text-[var(--foreground)]">Profile Details</h2>
@@ -221,16 +221,16 @@ export default function SettingsPage() {
                     <img
                       src={`${BACKEND_URL}${currentUser.profile_picture}`}
                       alt={currentUser.fullname}
-                      className="w-24 h-24 rounded-full object-cover border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300"
+                      className="w-24 h-24 rounded-full object-cover border-2 border-primary-500/50 shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300"
                     />
                   ) : (
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-600/20 border-2 border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-3xl shadow-inner">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-primary-500/20 to-blue-600/20 border-2 border-primary-500/30 flex items-center justify-center text-primary-400 font-bold text-3xl shadow-inner">
                       {fullname ? fullname.substring(0, 2).toUpperCase() : "SF"}
                     </div>
                   )}
                   {uploading && (
                     <div className="absolute inset-0 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-[1px]">
-                      <Loader2 className="w-6 h-6 animate-spin text-cyan-400" />
+                      <Loader2 className="w-6 h-6 animate-spin text-primary-400" />
                     </div>
                   )}
                 </div>
@@ -240,7 +240,7 @@ export default function SettingsPage() {
                     type="button"
                     onClick={handleUploadClick}
                     disabled={uploading}
-                    className="flex items-center gap-1.5 px-4 py-2 bg-cyan-500/10 border border-cyan-500/25 hover:border-cyan-500/50 text-cyan-400 rounded-xl text-xs font-semibold hover:bg-cyan-500/20 transition-all cursor-pointer disabled:opacity-50"
+                    className="flex items-center gap-1.5 px-4 py-2 bg-primary-500/10 border border-primary-500/25 hover:border-primary-500/50 text-primary-400 rounded-xl text-xs font-semibold hover:bg-primary-500/20 transition-all cursor-pointer disabled:opacity-50"
                   >
                     <Upload className="w-3.5 h-3.5" />
                     Upload Photo
@@ -273,7 +273,7 @@ export default function SettingsPage() {
                     value={fullname}
                     onChange={(e) => setFullname(e.target.value)}
                     placeholder="Enter your name"
-                    className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
                     required
                   />
                 </div>
@@ -289,7 +289,7 @@ export default function SettingsPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
                     required
                   />
                 </div>
@@ -308,7 +308,7 @@ export default function SettingsPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter new password"
-                    className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
+                    className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
                   />
                 </div>
               </div>
@@ -316,8 +316,8 @@ export default function SettingsPage() {
               {/* Role badge */}
               <div className="pt-2 flex items-center justify-between text-xs border-t border-[var(--border)]/30 mt-4">
                 <span className="text-[var(--muted)]">Account Role</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-medium capitalize text-[11px]">
-                  <ShieldCheck className="w-3.5 h-3.5 text-cyan-500" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 font-medium capitalize text-[11px]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-primary-500" />
                   {currentUser.role}
                 </span>
               </div>
@@ -326,7 +326,7 @@ export default function SettingsPage() {
             <button
               type="submit"
               disabled={profileSaving}
-              className="mt-6 w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3.5 rounded-xl transition-all hover-scale disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="mt-6 w-full flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-400 text-slate-950 font-bold py-3.5 rounded-xl transition-all hover-scale disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {profileSaving ? (
                 <>
@@ -437,14 +437,14 @@ export default function SettingsPage() {
         ) : (
           /* Profile Information and Instructions card for Non-Admins */
           <div className="glass-card rounded-2xl border border-[var(--border)] overflow-hidden shadow-xl bg-[var(--card)]/50 backdrop-blur-md p-6 flex flex-col justify-center space-y-4 text-center">
-            <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-2xl mx-auto shadow-md">
+            <div className="w-16 h-16 rounded-full bg-primary-500/10 border border-primary-500/30 flex items-center justify-center text-primary-400 font-bold text-2xl mx-auto shadow-md">
               {currentUser.fullname.substring(0, 2).toUpperCase()}
             </div>
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-[var(--foreground)]">{currentUser.fullname}</h3>
               <p className="text-xs text-[var(--muted)]">{currentUser.email}</p>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-semibold capitalize text-xs">
-                <ShieldCheck className="w-3.5 h-3.5 text-cyan-500" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 font-semibold capitalize text-xs">
+                <ShieldCheck className="w-3.5 h-3.5 text-primary-500" />
                 {currentUser.role} Account
               </div>
             </div>

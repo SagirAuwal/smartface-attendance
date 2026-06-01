@@ -206,7 +206,7 @@ export default function Students() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name or matric number..."
-            className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)] font-sans"
+            className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)] font-sans"
           />
         </div>
 
@@ -217,7 +217,7 @@ export default function Students() {
             setFormError("");
             setFormSuccess("");
           }}
-          className="flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold px-5 py-3 rounded-xl transition-all hover:bg-cyan-400 hover-scale cursor-pointer"
+          className="flex items-center justify-center gap-2 bg-primary-500 text-slate-950 font-bold px-5 py-3 rounded-xl transition-all hover:bg-primary-400 hover-scale cursor-pointer"
         >
           <UserPlus className="w-4 h-4" />
           Enroll Student
@@ -228,7 +228,7 @@ export default function Students() {
       <div className="glass-card rounded-2xl border border-[var(--border)] overflow-hidden shadow-xl">
         {loading ? (
           <div className="py-20 text-center text-[var(--muted)]">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-cyan-500" />
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-primary-500" />
             <span className="text-sm font-mono">Loading student registry...</span>
           </div>
         ) : filteredStudents.length === 0 ? (
@@ -317,7 +317,7 @@ export default function Students() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Form fields */}
                 <div className="space-y-4">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400">Account Details</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-primary-400">Account Details</h4>
                   
                   <div>
                     <label className="block text-xs font-semibold text-[var(--muted)] mb-1.5 uppercase">Full Name</label>
@@ -326,7 +326,7 @@ export default function Students() {
                       value={fullname}
                       onChange={(e) => setFullname(e.target.value)}
                       placeholder="e.g. Hamza Sageer"
-                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
@@ -338,7 +338,7 @@ export default function Students() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="hamza.sageer@university.edu"
-                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
@@ -350,12 +350,12 @@ export default function Students() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="temporary_pass"
-                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
 
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 pt-2">Academic Details</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-primary-400 pt-2">Academic Details</h4>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -365,7 +365,7 @@ export default function Students() {
                         value={matricNumber}
                         onChange={(e) => setMatricNumber(e.target.value)}
                         placeholder="RUN/CSC/22/..."
-                        className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500 font-mono text-xs"
+                        className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500 font-mono text-xs"
                         disabled={saving}
                       />
                     </div>
@@ -374,7 +374,7 @@ export default function Students() {
                       <select
                         value={level}
                         onChange={(e) => setLevel(e.target.value)}
-                        className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500 cursor-pointer"
+                        className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500 cursor-pointer"
                         disabled={saving}
                       >
                         <option>100 Level</option>
@@ -394,7 +394,7 @@ export default function Students() {
                       value={department}
                       onChange={(e) => setDepartment(e.target.value)}
                       placeholder="Computer Science"
-                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
@@ -402,7 +402,7 @@ export default function Students() {
 
                 {/* Biometric webcam panel */}
                 <div className="space-y-4 flex flex-col justify-start">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400">Biometric Enrollment</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-primary-400">Biometric Enrollment</h4>
                   
                   <div className="flex-1 flex flex-col items-center justify-center border border-[var(--border)] bg-black rounded-2xl min-h-[260px] relative overflow-hidden">
                     {/* Live Camera View */}
@@ -415,10 +415,10 @@ export default function Students() {
                            muted
                            className="w-full h-full object-cover scale-x-[-1]"
                         />
-                        <div className="absolute inset-0 border border-cyan-500/30 flex items-center justify-center pointer-events-none">
+                        <div className="absolute inset-0 border border-primary-500/30 flex items-center justify-center pointer-events-none">
                           {/* Face Crop Box Reference */}
-                          <div className="w-40 h-40 border border-dashed border-cyan-400 rounded-full relative">
-                            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9px] text-cyan-400 uppercase tracking-widest text-center font-semibold">Center Face</span>
+                          <div className="w-40 h-40 border border-dashed border-primary-400 rounded-full relative">
+                            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9px] text-primary-400 uppercase tracking-widest text-center font-semibold">Center Face</span>
                           </div>
                         </div>
                       </div>
@@ -453,7 +453,7 @@ export default function Students() {
                       <button
                         type="button"
                         onClick={handleStartCamera}
-                        className="w-full py-3 border border-[var(--border)] hover:border-cyan-500/30 hover:bg-cyan-500/5 text-xs font-bold rounded-xl text-[var(--foreground)] hover:text-cyan-400 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                        className="w-full py-3 border border-[var(--border)] hover:border-primary-500/30 hover:bg-primary-500/5 text-xs font-bold rounded-xl text-[var(--foreground)] hover:text-primary-400 transition-all flex items-center justify-center gap-2 cursor-pointer"
                         disabled={saving}
                       >
                         <Video className="w-4 h-4" />
@@ -466,7 +466,7 @@ export default function Students() {
                         <button
                           type="button"
                           onClick={handleCapture}
-                          className="flex-1 py-3 bg-cyan-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-cyan-400 transition-all cursor-pointer"
+                          className="flex-1 py-3 bg-primary-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-primary-400 transition-all cursor-pointer"
                         >
                           Capture Face
                         </button>
@@ -484,7 +484,7 @@ export default function Students() {
                       <button
                         type="button"
                         onClick={handleStartCamera}
-                        className="w-full py-3 border border-[var(--border)] hover:border-cyan-500/30 hover:bg-cyan-500/5 text-xs font-bold rounded-xl text-[var(--foreground)] hover:text-cyan-400 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                        className="w-full py-3 border border-[var(--border)] hover:border-primary-500/30 hover:bg-primary-500/5 text-xs font-bold rounded-xl text-[var(--foreground)] hover:text-primary-400 transition-all flex items-center justify-center gap-2 cursor-pointer"
                         disabled={saving}
                       >
                         <Camera className="w-4 h-4" />
@@ -513,7 +513,7 @@ export default function Students() {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-cyan-500 text-slate-950 font-extrabold text-xs rounded-xl hover:bg-cyan-400 transition-all glow-cyan flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-3 bg-primary-500 text-slate-950 font-extrabold text-xs rounded-xl hover:bg-primary-400 transition-all glow-primary flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={saving || !imageBlob}
                 >
                   {saving ? (

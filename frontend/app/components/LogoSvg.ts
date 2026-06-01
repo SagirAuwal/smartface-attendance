@@ -3,9 +3,9 @@ export function renderLogoSvg(size: number): string {
   <defs>
     <!-- Premium linear gradient for main branding elements -->
     <linearGradient id="logo-grad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2563eb" />
-      <stop offset="50%" stop-color="#06b6d4" />
-      <stop offset="100%" stop-color="#10b981" />
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#b5932a" />
+      <stop offset="100%" stop-color="#3a506b" />
     </linearGradient>
 
     <!-- High-tech glow effect -->
@@ -19,7 +19,7 @@ export function renderLogoSvg(size: number): string {
   </defs>
 
   <!-- 1. Outer Target Viewfinder Brackets -->
-  <g stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" opacity="0.9">
+  <g stroke="#d4af37" stroke-width="1.8" stroke-linecap="round" opacity="0.9">
     <path d="M 23,15 L 15,15 L 15,23" />
     <path d="M 77,15 L 85,15 L 85,23" />
     <path d="M 15,77 L 15,85 L 23,85" />
@@ -56,7 +56,7 @@ export function renderLogoSvg(size: number): string {
     " stroke="url(#logo-grad)" stroke-width="1.1" stroke-opacity="0.8" fill="none" />
 
     <!-- Symmetrical Face Grid Nodes (Intersections) -->
-    <g fill="#06b6d4" opacity="0.95" filter="url(#glow-effect)">
+    <g fill="#d4af37" opacity="0.95" filter="url(#glow-effect)">
       <circle cx="50" cy="18" r="1.0" />
       <circle cx="36" cy="22" r="1.0" />
       <circle cx="64" cy="22" r="1.0" />

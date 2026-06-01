@@ -140,17 +140,17 @@ class _HomeContainerScreenState extends State<HomeContainerScreen> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return const Scaffold(
-        backgroundColor: Color(0xFF0F172A),
+        backgroundColor: Color(0xFF0B132B),
         body: Center(
           child: CircularProgressIndicator(
-            color: Color(0xFF06B6D4),
+            color: Color(0xFFD4AF37),
           ),
         ),
       );
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0F172A),
+      backgroundColor: const Color(0xFF0B132B),
       body: IndexedStack(
         index: _currentIndex,
         children: _screens,
@@ -160,14 +160,14 @@ class _HomeContainerScreenState extends State<HomeContainerScreen> {
           : Container(
               decoration: const BoxDecoration(
                 border: Border(
-                  top: BorderSide(color: Color(0xFF334155), width: 1),
+                  top: BorderSide(color: Color(0xFF2A344E), width: 1),
                 ),
               ),
               child: BottomNavigationBar(
                 currentIndex: _currentIndex,
                 onTap: _updateActiveTab,
-                backgroundColor: const Color(0xFF1E293B),
-                selectedItemColor: const Color(0xFF06B6D4),
+                backgroundColor: const Color(0xFF1C2541),
+                selectedItemColor: const Color(0xFFD4AF37),
                 unselectedItemColor: const Color(0xFF64748B),
                 type: BottomNavigationBarType.fixed,
                 selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),

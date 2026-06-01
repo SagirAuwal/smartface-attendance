@@ -136,14 +136,14 @@ class _CoursesTabState extends State<CoursesTab> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              backgroundColor: const Color(0xFF1E293B),
+              backgroundColor: const Color(0xFF1C2541),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
-                side: const BorderSide(color: Color(0xFF334155)),
+                side: const BorderSide(color: Color(0xFF2A344E)),
               ),
               title: const Row(
                 children: [
-                  Icon(Icons.bookmark_add, color: Color(0xFF06B6D4)),
+                  Icon(Icons.bookmark_add, color: Color(0xFFD4AF37)),
                   SizedBox(width: 10),
                   Text("Add New Course", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                 ],
@@ -175,7 +175,7 @@ class _CoursesTabState extends State<CoursesTab> {
                       if (isAdmin) ...[
                         const SizedBox(height: 12),
                         DropdownButtonFormField<int>(
-                          dropdownColor: const Color(0xFF1E293B),
+                          dropdownColor: const Color(0xFF1C2541),
                           style: const TextStyle(color: Colors.white, fontSize: 13),
                           decoration: const InputDecoration(labelText: "Assign Instructor (Lecturer)", labelStyle: TextStyle(color: Color(0xFF94A3B8))),
                           items: lecturersList.map((lec) {
@@ -227,9 +227,9 @@ class _CoursesTabState extends State<CoursesTab> {
                             });
                           }
                         },
-                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF06B6D4), foregroundColor: const Color(0xFF0F172A)),
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFD4AF37), foregroundColor: const Color(0xFF0B132B)),
                   child: dialogLoading
-                      ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF0F172A)))
+                      ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF0B132B)))
                       : const Text("Create"),
                 ),
               ],
@@ -242,10 +242,10 @@ class _CoursesTabState extends State<CoursesTab> {
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFF0F172A);
-    const cardColor = Color(0xFF1E293B);
-    const primaryColor = Color(0xFF06B6D4);
-    const borderSlate = Color(0xFF334155);
+    const backgroundColor = Color(0xFF0B132B);
+    const cardColor = Color(0xFF1C2541);
+    const primaryColor = Color(0xFFD4AF37);
+    const borderSlate = Color(0xFF2A344E);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -383,9 +383,9 @@ class _CoursesTabState extends State<CoursesTab> {
                                     child: Row(
                                       children: [
                                         CircleAvatar(
-                                          backgroundColor: const Color(0xFF3B82F6).withOpacity(0.1),
+                                          backgroundColor: const Color(0xFF3A506B).withOpacity(0.1),
                                           radius: 20,
-                                          child: const Icon(Icons.book, color: Color(0xFF3B82F6), size: 20),
+                                          child: const Icon(Icons.book, color: Color(0xFF3A506B), size: 20),
                                         ),
                                         const SizedBox(width: 16),
 

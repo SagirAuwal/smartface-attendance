@@ -97,14 +97,14 @@ class _StudentsTabState extends State<StudentsTab> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              backgroundColor: const Color(0xFF1E293B),
+              backgroundColor: const Color(0xFF1C2541),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
-                side: const BorderSide(color: Color(0xFF334155)),
+                side: const BorderSide(color: Color(0xFF2A344E)),
               ),
               title: const Row(
                 children: [
-                  Icon(Icons.person_add_alt_1, color: Color(0xFF06B6D4)),
+                  Icon(Icons.person_add_alt_1, color: Color(0xFFD4AF37)),
                   SizedBox(width: 10),
                   Text("Add New Student", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                 ],
@@ -145,7 +145,7 @@ class _StudentsTabState extends State<StudentsTab> {
                         validator: (v) => v == null || v.isEmpty ? "Department is required" : null,
                       ),
                       DropdownButtonFormField<String>(
-                        dropdownColor: const Color(0xFF1E293B),
+                        dropdownColor: const Color(0xFF1C2541),
                         style: const TextStyle(color: Colors.white, fontSize: 13),
                         decoration: const InputDecoration(labelText: "Level", labelStyle: TextStyle(color: Color(0xFF94A3B8))),
                         items: ['100', '200', '300', '400', '500'].map((l) {
@@ -200,9 +200,9 @@ class _StudentsTabState extends State<StudentsTab> {
                             });
                           }
                         },
-                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF06B6D4), foregroundColor: const Color(0xFF0F172A)),
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFD4AF37), foregroundColor: const Color(0xFF0B132B)),
                   child: dialogLoading
-                      ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF0F172A)))
+                      ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF0B132B)))
                       : const Text("Create"),
                 ),
               ],
@@ -227,10 +227,10 @@ class _StudentsTabState extends State<StudentsTab> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              backgroundColor: const Color(0xFF1E293B),
+              backgroundColor: const Color(0xFF1C2541),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
-                side: const BorderSide(color: Color(0xFF334155)),
+                side: const BorderSide(color: Color(0xFF2A344E)),
               ),
               title: Text(name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
               content: Column(
@@ -254,8 +254,8 @@ class _StudentsTabState extends State<StudentsTab> {
                     icon: const Icon(Icons.face, size: 20),
                     label: const Text("Enroll Face Biometrics"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF06B6D4),
-                      foregroundColor: const Color(0xFF0F172A),
+                      backgroundColor: const Color(0xFFD4AF37),
+                      foregroundColor: const Color(0xFF0B132B),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     ),
@@ -351,7 +351,7 @@ class _StudentsTabState extends State<StudentsTab> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: const Color(0xFF1E293B),
+          backgroundColor: const Color(0xFF1C2541),
           title: const Text("Confirm Deletion", style: TextStyle(color: Colors.white)),
           content: Text("Are you absolutely sure you want to delete the student profile for '$name'? This action deletes all their face biometrics and attendance records irreversibly.",
               style: const TextStyle(color: Color(0xFF94A3B8))),
@@ -372,10 +372,10 @@ class _StudentsTabState extends State<StudentsTab> {
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFF0F172A);
-    const cardColor = Color(0xFF1E293B);
-    const primaryColor = Color(0xFF06B6D4);
-    const borderSlate = Color(0xFF334155);
+    const backgroundColor = Color(0xFF0B132B);
+    const cardColor = Color(0xFF1C2541);
+    const primaryColor = Color(0xFFD4AF37);
+    const borderSlate = Color(0xFF2A344E);
 
     return Scaffold(
       backgroundColor: backgroundColor,

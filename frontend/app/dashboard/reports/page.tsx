@@ -100,7 +100,7 @@ export default function Reports() {
       doc.setFillColor(37, 99, 235); // Blue 600
       doc.circle(20, 17, 7, "F");
       
-      doc.setFillColor(6, 182, 212); // Cyan 500
+      doc.setFillColor(6, 182, 212); // primary 500
       doc.circle(20, 17, 4, "F");
       
       doc.setFillColor(255, 255, 255); // White Core
@@ -237,7 +237,7 @@ export default function Reports() {
           <select
             value={selectedCourse}
             onChange={(e) => setSelectedCourse(e.target.value)}
-            className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-xs text-[var(--foreground)] outline-none cursor-pointer focus:border-cyan-500"
+            className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-xs text-[var(--foreground)] outline-none cursor-pointer focus:border-primary-500"
           >
             <option value="all">All Modules</option>
             {courses.map((c) => (
@@ -251,14 +251,14 @@ export default function Reports() {
         {/* Date Filter */}
         <div className="space-y-2">
           <label className="block text-xs font-semibold text-[var(--muted)] uppercase tracking-wider flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+            <Calendar className="w-3.5 h-3.5 text-primary-400" />
             Select Date
           </label>
           <input
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-xs text-[var(--foreground)] outline-none focus:border-cyan-500 cursor-pointer"
+            className="w-full px-3.5 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-xs text-[var(--foreground)] outline-none focus:border-primary-500 cursor-pointer"
           />
         </div>
 
@@ -274,7 +274,7 @@ export default function Reports() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Name or Matric number..."
-              className="w-full pl-9 pr-3 py-2.5 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-xs text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
+              className="w-full pl-9 pr-3 py-2.5 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-xs text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
             />
           </div>
         </div>
@@ -284,7 +284,7 @@ export default function Reports() {
           <button
             onClick={handleExportPDF}
             disabled={filteredLogs.length === 0}
-            className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs py-3.5 rounded-xl transition-all glow-cyan-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover-scale"
+            className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-primary-500 to-blue-600 hover:from-primary-400 hover:to-blue-500 text-slate-950 font-bold text-xs py-3.5 rounded-xl transition-all glow-primary-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover-scale"
             title="Export Tabular PDF Report"
           >
             <Download className="w-4 h-4" />
@@ -293,7 +293,7 @@ export default function Reports() {
           <button
             onClick={handleExportCSV}
             disabled={filteredLogs.length === 0}
-            className="flex-1 flex items-center justify-center gap-1.5 border border-[var(--border)] hover:border-cyan-500/30 hover:bg-cyan-500/5 text-[var(--foreground)] font-bold text-xs py-3.5 rounded-xl transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover-scale"
+            className="flex-1 flex items-center justify-center gap-1.5 border border-[var(--border)] hover:border-primary-500/30 hover:bg-primary-500/5 text-[var(--foreground)] font-bold text-xs py-3.5 rounded-xl transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover-scale"
             title="Export CSV Log File"
           >
             <Download className="w-4 h-4" />
@@ -306,7 +306,7 @@ export default function Reports() {
       <div className="glass-card rounded-2xl border border-[var(--border)] overflow-hidden shadow-xl">
         {loading ? (
           <div className="py-20 text-center text-[var(--muted)]">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-cyan-500" />
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-primary-500" />
             <span className="text-sm font-mono">Compiling registry index...</span>
           </div>
         ) : filteredLogs.length === 0 ? (
@@ -337,7 +337,7 @@ export default function Reports() {
                       {new Date(log.attendance_time).toLocaleString()}
                     </td>
                     <td className="px-6 py-4">
-                      <span className="font-mono text-xs font-medium text-cyan-400 bg-cyan-950/20 border border-cyan-500/20 px-2 py-0.5 rounded">
+                      <span className="font-mono text-xs font-medium text-primary-400 bg-primary-950/20 border border-primary-500/20 px-2 py-0.5 rounded">
                         {Math.round(log.confidence_score * 100)}%
                       </span>
                     </td>

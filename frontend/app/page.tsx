@@ -13,22 +13,22 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Logo size={48} className="w-12 h-12" />
-            <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-[var(--foreground)] via-[var(--foreground)]/80 to-cyan-400 bg-clip-text text-transparent">
+            <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-[var(--foreground)] via-[var(--foreground)]/80 to-primary-400 bg-clip-text text-transparent">
               SmartFace
             </span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--muted)]">
-            <a href="#features" className="hover:text-cyan-400 transition-colors">Features</a>
-            <a href="#workflow" className="hover:text-cyan-400 transition-colors">Workflow</a>
-            <a href="#security" className="hover:text-cyan-400 transition-colors">Security</a>
+            <a href="#features" className="hover:text-primary-400 transition-colors">Features</a>
+            <a href="#workflow" className="hover:text-primary-400 transition-colors">Workflow</a>
+            <a href="#security" className="hover:text-primary-400 transition-colors">Security</a>
           </nav>
 
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Link
               href="/login"
-              className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 hover-scale glow-cyan-sm animate-pulse"
+              className="flex items-center gap-2 bg-gradient-to-r from-primary-500 to-blue-600 hover:from-primary-400 hover:to-blue-500 text-slate-950 font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 hover-scale glow-primary-sm animate-pulse"
             >
               Launch System
               <ArrowRight className="w-4 h-4" />
@@ -40,19 +40,19 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-20 pb-24 md:pt-32 md:pb-36 max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-16">
         {/* Background Gradients */}
-        <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+        <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
         <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
         {/* Hero Left */}
         <div className="flex-1 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6 glow-cyan-sm">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold uppercase tracking-wider mb-6 glow-primary-sm">
+            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
             AI-Powered Biometrics
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-[var(--foreground)] mb-6">
             Real-Time Face Recognition <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500 bg-clip-text text-transparent text-glow-cyan">
+            <span className="bg-gradient-to-r from-primary-400 via-teal-400 to-blue-500 bg-clip-text text-transparent text-glow-primary">
               Attendance System
             </span>
           </h1>
@@ -64,13 +64,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <Link
               href="/login"
-              className="w-full sm:w-auto text-center bg-cyan-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:bg-cyan-400 hover-scale glow-cyan"
+              className="w-full sm:w-auto text-center bg-primary-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:bg-primary-400 hover-scale glow-primary"
             >
               Sign In to Console
             </Link>
             <a
               href="#features"
-              className="w-full sm:w-auto text-center border border-[var(--border)] hover:border-cyan-500/50 hover:bg-[var(--card)]/40 text-[var(--foreground)] font-semibold px-8 py-4 rounded-xl transition-all duration-200"
+              className="w-full sm:w-auto text-center border border-[var(--border)] hover:border-primary-500/50 hover:bg-[var(--card)]/40 text-[var(--foreground)] font-semibold px-8 py-4 rounded-xl transition-all duration-200"
             >
               Learn More
             </a>
@@ -97,20 +97,20 @@ export default function Home() {
               <div className="w-full h-full relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 to-slate-950 flex flex-col items-center justify-center">
                 
                 {/* Face Scanning Box Overlay */}
-                <div className="w-48 h-48 border-2 border-cyan-400/80 rounded-2xl relative flex items-center justify-center glow-cyan-sm">
+                <div className="w-48 h-48 border-2 border-primary-400/80 rounded-2xl relative flex items-center justify-center glow-primary-sm">
                   {/* Target corners */}
-                  <span className="absolute -top-1 -left-1 w-4 h-4 border-t-4 border-l-4 border-cyan-400" />
-                  <span className="absolute -top-1 -right-1 w-4 h-4 border-t-4 border-r-4 border-cyan-400" />
-                  <span className="absolute -bottom-1 -left-1 w-4 h-4 border-b-4 border-l-4 border-cyan-400" />
-                  <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-4 border-r-4 border-cyan-400" />
+                  <span className="absolute -top-1 -left-1 w-4 h-4 border-t-4 border-l-4 border-primary-400" />
+                  <span className="absolute -top-1 -right-1 w-4 h-4 border-t-4 border-r-4 border-primary-400" />
+                  <span className="absolute -bottom-1 -left-1 w-4 h-4 border-b-4 border-l-4 border-primary-400" />
+                  <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-4 border-r-4 border-primary-400" />
                   
                   {/* Scanning Laser Line */}
-                  <span className="absolute left-0 w-full h-0.5 bg-cyan-400 opacity-80 scanner-line" />
+                  <span className="absolute left-0 w-full h-0.5 bg-primary-400 opacity-80 scanner-line" />
                   
-                  <Users className="w-16 h-16 text-cyan-500/20" />
+                  <Users className="w-16 h-16 text-primary-500/20" />
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/20 rounded-xl px-4 py-2.5 flex items-center justify-between">
+                <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-primary-500/20 rounded-xl px-4 py-2.5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
                     <div>
@@ -118,7 +118,7 @@ export default function Home() {
                       <p className="text-sm font-semibold text-white">Sageer Hamza (CSC301)</p>
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-cyan-400 px-2 py-1 rounded bg-cyan-950/40 border border-cyan-500/30">
+                  <span className="text-xs font-bold text-primary-400 px-2 py-1 rounded bg-primary-950/40 border border-primary-500/30">
                     98.4%
                   </span>
                 </div>
@@ -141,7 +141,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[var(--muted)]">[08:04:22]</span>
-                <span className="text-cyan-400 font-semibold">Face detected: Matric RUN/CSC/22/0451</span>
+                <span className="text-primary-400 font-semibold">Face detected: Matric RUN/CSC/22/0451</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[var(--muted)]">[08:04:23]</span>
@@ -167,8 +167,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Feature 1 */}
             <div className="glass-card p-6 rounded-2xl border border-[var(--border)]/60 hover-scale">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 mb-5">
-                <Shield className="w-6 h-6 text-cyan-400" />
+              <div className="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center border border-primary-500/20 mb-5">
+                <Shield className="w-6 h-6 text-primary-400" />
               </div>
               <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">Zero Proxy Fraud</h3>
               <p className="text-sm text-[var(--muted)] leading-relaxed">

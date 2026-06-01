@@ -88,10 +88,10 @@ class _MyAttendanceTabState extends State<MyAttendanceTab> {
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFF0F172A);
-    const cardColor = Color(0xFF1E293B);
-    const primaryColor = Color(0xFF06B6D4);
-    const borderSlate = Color(0xFF334155);
+    const backgroundColor = Color(0xFF0B132B);
+    const cardColor = Color(0xFF1C2541);
+    const primaryColor = Color(0xFFD4AF37);
+    const borderSlate = Color(0xFF2A344E);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -215,7 +215,7 @@ class _MyAttendanceTabState extends State<MyAttendanceTab> {
 
                                 Color statusColor = const Color(0xFF10B981); // emerald for Present
                                 if (status.toString().toLowerCase() == 'late') {
-                                  statusColor = const Color(0xFF06B6D4); // cyan
+                                  statusColor = const Color(0xFFD4AF37); // gold
                                 } else if (status.toString().toLowerCase() == 'absent') {
                                   statusColor = const Color(0xFFEF4444); // red
                                 }

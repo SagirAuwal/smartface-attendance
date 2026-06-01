@@ -202,7 +202,7 @@ export default function AttendanceScanner() {
   if (loading) {
     return (
       <div className="flex h-64 items-center justify-center text-[var(--muted)]">
-        <Loader2 className="w-6 h-6 animate-spin text-cyan-500 mr-2" />
+        <Loader2 className="w-6 h-6 animate-spin text-primary-500 mr-2" />
         <span className="text-sm font-mono">Initializing camera modules...</span>
       </div>
     );
@@ -220,7 +220,7 @@ export default function AttendanceScanner() {
             value={selectedCourse}
             onChange={handleCourseChange}
             disabled={scanning}
-            className="w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-sm text-[var(--foreground)] outline-none cursor-pointer"
+            className="w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-sm text-[var(--foreground)] outline-none cursor-pointer"
           >
             {courses.map((course) => (
               <option key={course.id} value={course.id}>
@@ -235,7 +235,7 @@ export default function AttendanceScanner() {
           {!scanning ? (
             <button
               onClick={startScanning}
-              className="w-full md:w-auto flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold px-6 py-3 rounded-xl hover:bg-cyan-400 transition-all glow-cyan cursor-pointer hover-scale"
+              className="w-full md:w-auto flex items-center justify-center gap-2 bg-primary-500 text-slate-950 font-bold px-6 py-3 rounded-xl hover:bg-primary-400 transition-all glow-primary cursor-pointer hover-scale"
             >
               <Play className="w-4.5 h-4.5 fill-slate-950" />
               Start Scanner
@@ -267,18 +267,18 @@ export default function AttendanceScanner() {
                   {/* Face bounding box guideline */}
                   <div className={`w-52 h-52 border-2 border-dashed rounded-3xl relative transition-all duration-300 ${
                     statusType === "success" ? "border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)] scale-105" :
-                    statusType === "duplicate" ? "border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]" :
-                    statusType === "error" ? "border-red-500" : "border-cyan-400"
+                    statusType === "duplicate" ? "border-primary-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]" :
+                    statusType === "error" ? "border-red-500" : "border-primary-400"
                   }`}>
                     {/* Corner accents */}
-                    <span className="absolute -top-1.5 -left-1.5 w-5 h-5 border-t-4 border-l-4 border-cyan-400 rounded-tl-lg" />
-                    <span className="absolute -top-1.5 -right-1.5 w-5 h-5 border-t-4 border-r-4 border-cyan-400 rounded-tr-lg" />
-                    <span className="absolute -bottom-1.5 -left-1.5 w-5 h-5 border-b-4 border-l-4 border-cyan-400 rounded-bl-lg" />
-                    <span className="absolute -bottom-1.5 -right-1.5 w-5 h-5 border-b-4 border-r-4 border-cyan-400 rounded-br-lg" />
+                    <span className="absolute -top-1.5 -left-1.5 w-5 h-5 border-t-4 border-l-4 border-primary-400 rounded-tl-lg" />
+                    <span className="absolute -top-1.5 -right-1.5 w-5 h-5 border-t-4 border-r-4 border-primary-400 rounded-tr-lg" />
+                    <span className="absolute -bottom-1.5 -left-1.5 w-5 h-5 border-b-4 border-l-4 border-primary-400 rounded-bl-lg" />
+                    <span className="absolute -bottom-1.5 -right-1.5 w-5 h-5 border-b-4 border-r-4 border-primary-400 rounded-br-lg" />
                     
                     {/* Scanner line */}
                     {statusType === "scanning" && (
-                      <span className="absolute left-0 w-full h-0.5 bg-cyan-400 scanner-line" />
+                      <span className="absolute left-0 w-full h-0.5 bg-primary-400 scanner-line" />
                     )}
                   </div>
                 </div>
@@ -296,8 +296,8 @@ export default function AttendanceScanner() {
               {/* Camera Offline Placeholder */}
               {!scanning && (
                 <div className="text-center p-12 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-[var(--card)] flex items-center justify-center border border-[var(--border)] mx-auto glow-cyan-sm">
-                    <Camera className="w-7 h-7 text-cyan-400" />
+                  <div className="w-16 h-16 rounded-full bg-[var(--card)] flex items-center justify-center border border-[var(--border)] mx-auto glow-primary-sm">
+                    <Camera className="w-7 h-7 text-primary-400" />
                   </div>
                   <p className="text-sm font-semibold text-[var(--foreground)]">Biometric Camera Offline</p>
                   <p className="text-xs text-[var(--muted)] max-w-xs mx-auto">
@@ -313,16 +313,16 @@ export default function AttendanceScanner() {
             {/* Status indicator bar */}
             <div className={`p-5 flex items-center justify-between text-xs font-semibold ${
               statusType === "success" ? "bg-emerald-500/10 border-t border-emerald-500/25 text-emerald-400" :
-              statusType === "duplicate" ? "bg-cyan-500/10 border-t border-cyan-500/25 text-cyan-400" :
+              statusType === "duplicate" ? "bg-primary-500/10 border-t border-primary-500/25 text-primary-400" :
               statusType === "error" ? "bg-red-500/10 border-t border-red-500/25 text-red-400" :
-              statusType === "scanning" ? "bg-cyan-500/5 border-t border-cyan-500/15 text-cyan-400" :
+              statusType === "scanning" ? "bg-primary-500/5 border-t border-primary-500/15 text-primary-400" :
               "bg-[var(--card)]/60 border-t border-[var(--border)]/60 text-[var(--muted)]"
             }`}>
               <div className="flex items-center gap-2.5">
                 {statusType === "success" && <CheckCircle className="w-4.5 h-4.5 text-emerald-500" />}
-                {statusType === "duplicate" && <CheckCircle className="w-4.5 h-4.5 text-cyan-500" />}
+                {statusType === "duplicate" && <CheckCircle className="w-4.5 h-4.5 text-primary-500" />}
                 {statusType === "error" && <AlertCircle className="w-4.5 h-4.5 text-red-500" />}
-                {statusType === "scanning" && <Loader2 className="w-4.5 h-4.5 animate-spin text-cyan-400" />}
+                {statusType === "scanning" && <Loader2 className="w-4.5 h-4.5 animate-spin text-primary-400" />}
                 <span className="font-medium tracking-wide uppercase font-mono">{statusMessage}</span>
               </div>
               
@@ -332,7 +332,7 @@ export default function AttendanceScanner() {
                   <span className="text-[10px] text-[var(--muted)] uppercase tracking-wider font-mono">Similarity Score</span>
                   <span className={`px-2 py-0.5 rounded font-bold font-mono text-[10px] ${
                     statusType === "success" ? "bg-emerald-950/40 border border-emerald-500/30 text-emerald-400" :
-                    "bg-cyan-950/40 border border-cyan-500/30 text-cyan-400"
+                    "bg-primary-950/40 border border-primary-500/30 text-primary-400"
                   }`}>
                     {Math.round(matchScore * 100)}%
                   </span>
@@ -343,7 +343,7 @@ export default function AttendanceScanner() {
 
           {/* Developer Testing Module panel */}
           <div className="glass-card rounded-2xl border border-[var(--border)] p-6 space-y-4">
-            <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-primary-400 text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4" />
               <span>Developer Test Simulation Console</span>
             </div>
@@ -356,7 +356,7 @@ export default function AttendanceScanner() {
                 <select
                   value={mockStudentId}
                   onChange={(e) => setMockStudentId(e.target.value)}
-                  className="w-full px-3 py-2 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-xs text-[var(--foreground)] outline-none cursor-pointer"
+                  className="w-full px-3 py-2 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-xs text-[var(--foreground)] outline-none cursor-pointer"
                 >
                   <option value="">Off (Use Natural Vector Math)</option>
                   {students.map((std) => (
@@ -368,7 +368,7 @@ export default function AttendanceScanner() {
               </div>
               <div className="flex items-end">
                 <div className="px-3.5 py-2.5 rounded-xl bg-[var(--card)]/50 border border-[var(--border)] text-[10px] text-[var(--muted)] flex items-center gap-2">
-                  <HelpCircle className="w-3.5 h-3.5 text-cyan-500" />
+                  <HelpCircle className="w-3.5 h-3.5 text-primary-500" />
                   <span>Forces backend to match selected student profiles.</span>
                 </div>
               </div>
@@ -383,7 +383,7 @@ export default function AttendanceScanner() {
               <h3 className="text-base font-bold text-[var(--foreground)]">Class Register</h3>
               <p className="text-[10px] text-[var(--muted)] mt-0.5">Checked-in students today</p>
             </div>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-950/30 border border-cyan-500/20 text-cyan-400 text-xs font-mono font-bold">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-950/30 border border-primary-500/20 text-primary-400 text-xs font-mono font-bold">
               <Users className="w-3.5 h-3.5" />
               {attendanceLog.length} Present
             </span>
@@ -403,7 +403,7 @@ export default function AttendanceScanner() {
                   className="flex items-center justify-between p-3.5 rounded-xl border border-[var(--border)] bg-[var(--card)]/40 hover:bg-[var(--card)] transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xs font-bold font-mono border border-cyan-500/10">
+                    <div className="w-9 h-9 rounded-xl bg-primary-500/10 flex items-center justify-center text-primary-400 text-xs font-bold font-mono border border-primary-500/10">
                       {item.student.user.fullname.substring(0, 2).toUpperCase()}
                     </div>
                     <div>

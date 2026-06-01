@@ -49,9 +49,9 @@ export default function Dashboard() {
     return (
       <div className="flex h-64 items-center justify-center text-slate-400">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" />
-          <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce [animation-delay:0.2s]" />
-          <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce [animation-delay:0.4s]" />
+          <span className="w-2 h-2 bg-primary-400 rounded-full animate-bounce" />
+          <span className="w-2 h-2 bg-primary-400 rounded-full animate-bounce [animation-delay:0.2s]" />
+          <span className="w-2 h-2 bg-primary-400 rounded-full animate-bounce [animation-delay:0.4s]" />
           <span className="text-xs font-mono ml-2">Loading metrics...</span>
         </div>
       </div>
@@ -71,8 +71,8 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 max-w-6xl">
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-cyan-500/25 bg-gradient-to-br from-[#0c1222] to-[#060a12] p-6 md:p-8 shadow-[0_0_30px_rgba(6,182,212,0.04)] flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="absolute -right-16 -top-16 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-2xl border border-primary-500/25 bg-gradient-to-br from-[#0c1222] to-[#060a12] p-6 md:p-8 shadow-[0_0_30px_rgba(6,182,212,0.04)] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="absolute -right-16 -top-16 w-48 h-48 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
         
         <div className="flex-1 max-w-xl z-10">
@@ -83,10 +83,10 @@ export default function Dashboard() {
         </div>
 
         {/* Biometric Scanning Illustration */}
-        <div className="w-full md:w-[400px] h-32 md:h-36 flex-shrink-0 relative overflow-hidden bg-slate-950/50 rounded-xl border border-cyan-500/15 flex items-center justify-center p-1 z-10">
+        <div className="w-full md:w-[400px] h-32 md:h-36 flex-shrink-0 relative overflow-hidden bg-slate-950/50 rounded-xl border border-primary-500/15 flex items-center justify-center p-1 z-10">
           <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
             <defs>
-              <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <filter id="primary-glow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="2" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
@@ -138,7 +138,7 @@ export default function Dashboard() {
             " stroke="url(#logo-grad)" strokeWidth="1.1" strokeOpacity="0.6" fill="none" />
 
             {/* Symmetrical Face Grid Nodes */}
-            <g fill="#22d3ee" filter="url(#cyan-glow)">
+            <g fill="#22d3ee" filter="url(#primary-glow)">
               <circle cx="235" cy="22" r="1.2" />
               <circle cx="214" cy="28" r="1.2" />
               <circle cx="256" cy="28" r="1.2" />
@@ -190,9 +190,9 @@ export default function Dashboard() {
 
             {/* Animated Laser Scanning Line */}
             <g className="scanner-line-group-anim">
-              <rect x="180" y="0" width="115" height="1.5" fill="url(#scanner-grad)" filter="url(#cyan-glow)" />
-              <circle cx="180" cy="0.75" r="1.5" fill="#22d3ee" filter="url(#cyan-glow)" />
-              <circle cx="295" cy="0.75" r="1.5" fill="#22d3ee" filter="url(#cyan-glow)" />
+              <rect x="180" y="0" width="115" height="1.5" fill="url(#scanner-grad)" filter="url(#primary-glow)" />
+              <circle cx="180" cy="0.75" r="1.5" fill="#22d3ee" filter="url(#primary-glow)" />
+              <circle cx="295" cy="0.75" r="1.5" fill="#22d3ee" filter="url(#primary-glow)" />
             </g>
           </svg>
           <style dangerouslySetInnerHTML={{__html: `
@@ -225,8 +225,8 @@ export default function Dashboard() {
         <div className="glass-card p-6 rounded-2xl border border-slate-800">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Enrolled</span>
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
-              <Users className="w-5 h-5 text-cyan-400" />
+            <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center border border-primary-500/20">
+              <Users className="w-5 h-5 text-primary-400" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
@@ -297,12 +297,12 @@ export default function Dashboard() {
                         <span className="font-bold text-[var(--foreground)] mr-2">{course.course_code}</span>
                         <span className="text-[var(--muted)] text-xs">{course.course_name}</span>
                       </div>
-                      <span className="font-semibold text-cyan-400">{course.attendance_rate}%</span>
+                      <span className="font-semibold text-primary-400">{course.attendance_rate}%</span>
                     </div>
                     {/* Progress Bar */}
                     <div className="h-2 w-full bg-[var(--background)] rounded-full overflow-hidden border border-[var(--border)]/40">
                       <div
-                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary-500 to-blue-500 rounded-full"
                         style={{ width: `${course.attendance_rate}%` }}
                       />
                     </div>
@@ -321,10 +321,10 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Link
                 href="/dashboard/attendance"
-                className="glass-card p-5 rounded-2xl border border-[var(--border)] hover:border-cyan-500/20 hover:bg-[var(--card)]/55 flex flex-col items-center text-center group cursor-pointer"
+                className="glass-card p-5 rounded-2xl border border-[var(--border)] hover:border-primary-500/20 hover:bg-[var(--card)]/55 flex flex-col items-center text-center group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 mb-3 group-hover:scale-110 transition-transform">
-                  <Camera className="w-5 h-5 text-cyan-400" />
+                <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center border border-primary-500/20 mb-3 group-hover:scale-110 transition-transform">
+                  <Camera className="w-5 h-5 text-primary-400" />
                 </div>
                 <h4 className="text-xs font-bold text-[var(--foreground)] mb-1">Mark Face Attendance</h4>
                 <p className="text-[10px] text-[var(--muted)]">Open webcam scanner</p>
@@ -378,7 +378,7 @@ export default function Dashboard() {
                   className="flex items-center justify-between p-3 rounded-xl border border-[var(--border)]/40 bg-[var(--card)]/40 hover:bg-[var(--card)]/80"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xs font-bold font-mono">
+                    <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center text-primary-400 text-xs font-bold font-mono">
                       {log.student.user.fullname.charAt(0).toUpperCase()}
                     </div>
                     <div>
@@ -394,7 +394,7 @@ export default function Dashboard() {
               
               <Link
                 href="/dashboard/reports"
-                className="flex items-center justify-center gap-1.5 text-xs font-medium text-cyan-400 hover:text-cyan-300 transition-colors pt-2 block text-center"
+                className="flex items-center justify-center gap-1.5 text-xs font-medium text-primary-400 hover:text-primary-300 transition-colors pt-2 block text-center"
               >
                 View all logs
                 <ArrowUpRight className="w-3.5 h-3.5" />

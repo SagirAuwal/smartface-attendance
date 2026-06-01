@@ -227,10 +227,10 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFF0F172A);
-    const cardColor = Color(0xFF1E293B);
-    const primaryColor = Color(0xFF06B6D4);
-    const borderSlate = Color(0xFF334155);
+    const backgroundColor = Color(0xFF0B132B);
+    const cardColor = Color(0xFF1C2541);
+    const primaryColor = Color(0xFFD4AF37);
+    const borderSlate = Color(0xFF2A344E);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -386,7 +386,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
                         onPressed: (_processingScan || !_cameraInitialized) ? null : _handleScanFace,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: primaryColor,
-                          foregroundColor: const Color(0xFF0F172A),
+                          foregroundColor: const Color(0xFF0B132B),
                           padding: const EdgeInsets.symmetric(vertical: 18),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
@@ -429,8 +429,8 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
         icon = Icons.check_circle_outline;
         break;
       case 'duplicate':
-        cardBorderColor = const Color(0xFF06B6D4); // Cyan
-        textColor = const Color(0xFF06B6D4);
+        cardBorderColor = const Color(0xFFD4AF37); // Gold
+        textColor = const Color(0xFFD4AF37);
         icon = Icons.info_outline;
         break;
       case 'error':
@@ -439,13 +439,13 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
         icon = Icons.error_outline;
         break;
       default:
-        cardBorderColor = const Color(0xFF334155);
+        cardBorderColor = const Color(0xFF2A344E);
         textColor = Colors.white;
         icon = Icons.info_outline;
     }
 
     return Card(
-      color: const Color(0xFF1E293B),
+      color: const Color(0xFF1C2541),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(color: cardBorderColor.withOpacity(0.4), width: 1.5),
@@ -475,7 +475,7 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
             
             if (_matchedStudentName != null) ...[
               const SizedBox(height: 12),
-              const Divider(color: Color(0xFF334155), height: 1),
+              const Divider(color: Color(0xFF2A344E), height: 1),
               const SizedBox(height: 12),
               
               Text(

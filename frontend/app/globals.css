@@ -1,20 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-50: #fcfaf2;
+  --color-primary-100: #f7f1d4;
+  --color-primary-200: #efe2a8;
+  --color-primary-300: #e5cd72;
+  --color-primary-400: #dcba48;
+  --color-primary-500: #d4af37; /* Brass Gold primary */
+  --color-primary-600: #b5932a;
+  --color-primary-700: #8c7020;
+  --color-primary-800: #665217;
+  --color-primary-900: #4c3d11;
+  --color-primary-950: #2b220a;
+  
+  --color-accent-50: #f4f6f8;
+  --color-accent-100: #e8ecf1;
+  --color-accent-200: #ccd8e3;
+  --color-accent-300: #a3b8cd;
+  --color-accent-400: #7393b3;
+  --color-accent-500: #3a506b; /* Slate Blue accent */
+  --color-accent-600: #2e4056;
+  --color-accent-700: #243243;
+  --color-accent-800: #1b2632;
+  --color-accent-900: #141b24;
+}
+
 :root, .dark {
-  --background: #0b0f19; /* Midnight Navy matching logo start blue */
+  --background: #0b132b; /* Deep Sapphire background */
   --foreground: #f1f5f9; /* Slate 100 */
-  --card: #111827; /* Very dark slate/navy */
-  --card-border: #1e293b; /* Subtle slate border */
-  --primary: #06b6d4; /* Neon cyan matching logo center */
-  --primary-hover: #0891b2;
-  --accent: #2563eb; /* Royal blue matching logo outer figures */
-  --success: #10b981; /* Emerald matching logo tail */
+  --card: #1c2541; /* Midnight Navy */
+  --card-border: #2a344e; /* Subtle navy border */
+  --primary: #d4af37; /* Brass Gold primary */
+  --primary-hover: #bda12a;
+  --accent: #3a506b; /* Slate Blue accent */
+  --success: #10b981; /* Emerald */
   --warning: #f59e0b;
   --error: #ef4444;
   --muted: #64748b;
-  --border: #1e293b;
-  --glass-background: rgba(17, 24, 39, 0.75);
-  --glass-border: rgba(37, 99, 235, 0.15); /* Glow border in primary accent */
+  --border: #2a344e;
+  --glass-background: rgba(28, 37, 65, 0.75);
+  --glass-border: rgba(212, 175, 55, 0.15); /* Glow border in gold */
 }
 
 .light {
@@ -22,16 +47,16 @@
   --foreground: #0f172a; /* Slate 900 */
   --card: #ffffff;
   --card-border: #e2e8f0; /* Slate 200 */
-  --primary: #0891b2; /* Cyan dark */
-  --primary-hover: #0e7490;
-  --accent: #2563eb; /* Blue */
-  --success: #059669; /* Darker emerald for contrast */
+  --primary: #b5932a; /* Gold dark */
+  --primary-hover: #8c7020;
+  --accent: #3a506b;
+  --success: #059669;
   --warning: #d97706;
   --error: #dc2626;
   --muted: #4b5563;
   --border: #e2e8f0;
   --glass-background: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(37, 99, 235, 0.08);
+  --glass-border: rgba(181, 147, 42, 0.08);
 }
 
 body {
@@ -49,16 +74,16 @@ body {
     border: 1px solid var(--glass-border);
   }
   
-  .glow-cyan {
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+  .glow-primary, .glow-cyan {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
   }
   
-  .glow-cyan-sm {
-    box-shadow: 0 0 8px rgba(6, 182, 212, 0.25);
+  .glow-primary-sm, .glow-cyan-sm {
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
   }
 
-  .text-glow-cyan {
-    text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+  .text-glow-primary, .text-glow-cyan {
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
   }
 
   /* Scanline effect for face recognition camera UI */

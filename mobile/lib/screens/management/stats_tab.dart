@@ -146,10 +146,10 @@ class _StatsTabState extends State<StatsTab> {
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFF0F172A);
-    const cardColor = Color(0xFF1E293B);
-    const primaryColor = Color(0xFF06B6D4);
-    const borderSlate = Color(0xFF334155);
+    const backgroundColor = Color(0xFF0B132B);
+    const cardColor = Color(0xFF1C2541);
+    const primaryColor = Color(0xFFD4AF37);
+    const borderSlate = Color(0xFF2A344E);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -470,7 +470,7 @@ class _StatsTabState extends State<StatsTab> {
 
                                   Color statusColor = const Color(0xFF10B981);
                                   if (status.toString().toLowerCase() == 'late') {
-                                    statusColor = const Color(0xFF06B6D4);
+                                    statusColor = const Color(0xFFD4AF37);
                                   } else if (status.toString().toLowerCase() == 'absent') {
                                     statusColor = const Color(0xFFEF4444);
                                   }
@@ -572,8 +572,8 @@ class _StatsTabState extends State<StatsTab> {
     required IconData icon,
     required Color color,
   }) {
-    const cardColor = Color(0xFF1E293B);
-    const borderSlate = Color(0xFF334155);
+    const cardColor = Color(0xFF1C2541);
+    const borderSlate = Color(0xFF2A344E);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),

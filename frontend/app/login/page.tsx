@@ -85,14 +85,14 @@ export default function Login() {
       </div>
 
       {/* Background decoration blur */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
           <Link href="/" className="flex items-center gap-3 mb-2 hover-scale">
             <Logo size={56} className="w-14 h-14" />
-            <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[var(--foreground)] to-cyan-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[var(--foreground)] to-primary-400 bg-clip-text text-transparent">
               SmartFace
             </span>
           </Link>
@@ -108,7 +108,7 @@ export default function Login() {
               onClick={() => handleTabChange("admin")}
               className={`flex-1 pb-3 text-sm font-bold text-center transition-all cursor-pointer ${
                 activeTab === "admin"
-                  ? "text-cyan-400 border-b-2 border-cyan-500"
+                  ? "text-primary-400 border-b-2 border-primary-500"
                   : "text-[var(--muted)] hover:text-[var(--foreground)]"
               }`}
             >
@@ -119,7 +119,7 @@ export default function Login() {
               onClick={() => handleTabChange("lecturer")}
               className={`flex-1 pb-3 text-sm font-bold text-center transition-all cursor-pointer ${
                 activeTab === "lecturer"
-                  ? "text-cyan-400 border-b-2 border-cyan-500"
+                  ? "text-primary-400 border-b-2 border-primary-500"
                   : "text-[var(--muted)] hover:text-[var(--foreground)]"
               }`}
             >
@@ -150,7 +150,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={activeTab === "admin" ? "admin@smartface.com" : "tariq@smartface.com"}
-                  className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 rounded-xl text-sm text-[var(--foreground)] placeholder-[var(--muted)] outline-none transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 focus:ring-1 focus:ring-primary-500 rounded-xl text-sm text-[var(--foreground)] placeholder-[var(--muted)] outline-none transition-all"
                   disabled={loading}
                 />
               </div>
@@ -167,7 +167,7 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 rounded-xl text-sm text-[var(--foreground)] placeholder-[var(--muted)] outline-none transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 focus:ring-1 focus:ring-primary-500 rounded-xl text-sm text-[var(--foreground)] placeholder-[var(--muted)] outline-none transition-all"
                   disabled={loading}
                 />
               </div>
@@ -176,7 +176,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold py-3.5 rounded-xl transition-all duration-200 hover:bg-cyan-400 glow-cyan cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover-scale"
+              className="w-full flex items-center justify-center gap-2 bg-primary-500 text-slate-950 font-bold py-3.5 rounded-xl transition-all duration-200 hover:bg-primary-400 glow-primary cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover-scale"
             >
               {loading ? (
                 <>

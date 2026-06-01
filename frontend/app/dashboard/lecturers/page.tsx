@@ -130,7 +130,7 @@ export default function Lecturers() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name or email..."
-            className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-cyan-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
+            className="w-full pl-10 pr-4 py-3 bg-[var(--card)] border border-[var(--border)] focus:border-primary-500 rounded-xl text-sm text-[var(--foreground)] outline-none transition-all placeholder-[var(--muted)]"
           />
         </div>
 
@@ -141,7 +141,7 @@ export default function Lecturers() {
             setFormError("");
             setFormSuccess("");
           }}
-          className="flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold px-5 py-3 rounded-xl transition-all hover:bg-cyan-400 hover-scale cursor-pointer"
+          className="flex items-center justify-center gap-2 bg-primary-500 text-slate-950 font-bold px-5 py-3 rounded-xl transition-all hover:bg-primary-400 hover-scale cursor-pointer"
         >
           <UserPlus className="w-4 h-4" />
           Add Lecturer
@@ -152,7 +152,7 @@ export default function Lecturers() {
       <div className="glass-card rounded-2xl border border-[var(--border)] overflow-hidden shadow-xl">
         {loading ? (
           <div className="py-20 text-center text-[var(--muted)]">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-cyan-500" />
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-primary-500" />
             <span className="text-sm font-mono">Loading lecturer database...</span>
           </div>
         ) : filteredLecturers.length === 0 ? (
@@ -245,7 +245,7 @@ export default function Lecturers() {
                       value={fullname}
                       onChange={(e) => setFullname(e.target.value)}
                       placeholder="Dr. Zainab Aliyu"
-                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
@@ -260,7 +260,7 @@ export default function Lecturers() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="zainab.aliyu@university.edu"
-                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
@@ -275,7 +275,7 @@ export default function Lecturers() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                       disabled={saving}
                     />
                   </div>
@@ -288,13 +288,13 @@ export default function Lecturers() {
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
                     placeholder="e.g. Computer Science"
-                    className="w-full px-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                    className="w-full px-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                     disabled={saving}
                   />
                 </div>
 
                 <div className="pt-2 border-t border-[var(--border)]/40">
-                  <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-3">Assigned Course Module</h4>
+                  <h4 className="text-xs font-bold text-primary-400 uppercase tracking-wider mb-3">Assigned Course Module</h4>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-[var(--muted)] mb-1.5 uppercase">Course Code</label>
@@ -303,7 +303,7 @@ export default function Lecturers() {
                         value={courseCode}
                         onChange={(e) => setCourseCode(e.target.value)}
                         placeholder="e.g. CSC301"
-                        className="w-full px-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500 font-mono text-xs"
+                        className="w-full px-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500 font-mono text-xs"
                         disabled={saving}
                       />
                     </div>
@@ -314,7 +314,7 @@ export default function Lecturers() {
                         value={courseName}
                         onChange={(e) => setCourseName(e.target.value)}
                         placeholder="e.g. Artificial Intelligence"
-                        className="w-full px-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-cyan-500"
+                        className="w-full px-4 py-2.5 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--foreground)] outline-none focus:border-primary-500"
                         disabled={saving}
                       />
                     </div>
@@ -334,7 +334,7 @@ export default function Lecturers() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-cyan-500 text-slate-950 font-extrabold text-xs rounded-xl hover:bg-cyan-400 transition-all glow-cyan flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="px-5 py-2.5 bg-primary-500 text-slate-950 font-extrabold text-xs rounded-xl hover:bg-primary-400 transition-all glow-primary flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                   disabled={saving}
                 >
                   {saving ? (

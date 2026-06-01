@@ -63,8 +63,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return (
       <div className="flex h-screen items-center justify-center bg-[var(--background)] text-[var(--foreground)]">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/30 animate-pulse">
-            <Camera className="w-6 h-6 text-cyan-400" />
+          <div className="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center border border-primary-500/30 animate-pulse">
+            <Camera className="w-6 h-6 text-primary-400" />
           </div>
           <span className="text-sm text-[var(--muted)] font-medium">Loading session...</span>
         </div>
@@ -129,7 +129,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <>
               <div className="flex items-center gap-3">
                 <Logo size={44} className="w-11 h-11" />
-                <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-[var(--foreground)] to-cyan-400 bg-clip-text text-transparent">
+                <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-[var(--foreground)] to-primary-400 bg-clip-text text-transparent">
                   SmartFace
                 </span>
               </div>
@@ -164,12 +164,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   sidebarCollapsed ? "justify-center p-3" : "gap-3.5 px-4 py-3"
                 } ${
                   isActive
-                    ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-[inset_0_0_10px_rgba(6,182,212,0.05)]"
+                    ? "bg-primary-500/10 text-primary-400 border border-primary-500/20 shadow-[inset_0_0_10px_rgba(6,182,212,0.05)]"
                     : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--background)]/50"
                 }`}
                 title={sidebarCollapsed ? item.name : undefined}
               >
-                <Icon className={`w-5 h-5 ${isActive ? "text-cyan-400" : "text-[var(--muted)]"}`} />
+                <Icon className={`w-5 h-5 ${isActive ? "text-primary-400" : "text-[var(--muted)]"}`} />
                 {!sidebarCollapsed && <span>{item.name}</span>}
               </Link>
             );
@@ -185,10 +185,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <img
                 src={`${BACKEND_URL}${currentUser.profile_picture}`}
                 alt={currentUser.fullname}
-                className="w-9 h-9 rounded-full object-cover border border-cyan-500/30 flex-shrink-0"
+                className="w-9 h-9 rounded-full object-cover border border-primary-500/30 flex-shrink-0"
               />
             ) : (
-              <div className="w-9 h-9 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-sm flex-shrink-0">
+              <div className="w-9 h-9 rounded-full bg-primary-500/10 border border-primary-500/30 flex items-center justify-center font-bold text-primary-400 text-sm flex-shrink-0">
                 {currentUser.fullname.charAt(0).toUpperCase()}
               </div>
             )}
@@ -196,7 +196,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-semibold text-[var(--foreground)] truncate">{currentUser.fullname}</p>
                 <p className="text-[10px] text-[var(--muted)] capitalize truncate flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-cyan-500" />
+                  <ShieldCheck className="w-3 h-3 text-primary-500" />
                   {currentUser.role}
                 </p>
               </div>
@@ -252,7 +252,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                       isActive
-                        ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+                        ? "bg-primary-500/10 text-primary-400 border border-primary-500/20"
                         : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--background)]/50"
                     }`}
                   >
@@ -269,10 +269,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   <img
                     src={`${BACKEND_URL}${currentUser.profile_picture}`}
                     alt={currentUser.fullname}
-                    className="w-9 h-9 rounded-full object-cover border border-cyan-500/30 flex-shrink-0"
+                    className="w-9 h-9 rounded-full object-cover border border-primary-500/30 flex-shrink-0"
                   />
                 ) : (
-                  <div className="w-9 h-9 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-sm">
+                  <div className="w-9 h-9 rounded-full bg-primary-500/10 border border-primary-500/30 flex items-center justify-center font-bold text-primary-400 text-sm">
                     {currentUser.fullname.charAt(0).toUpperCase()}
                   </div>
                 )}
@@ -322,7 +322,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
             {/* System Mode Badge */}
             <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)]">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
               <span className="text-[10px] font-mono text-[var(--muted)] uppercase tracking-wider">Server: Online</span>
             </div>
             
@@ -331,10 +331,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <img
                 src={`${BACKEND_URL}${currentUser.profile_picture}`}
                 alt={currentUser.fullname}
-                className="w-10 h-10 rounded-xl object-cover border border-cyan-500/30 glow-cyan-sm"
+                className="w-10 h-10 rounded-xl object-cover border border-primary-500/30 glow-primary-sm"
               />
             ) : (
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-bold text-sm glow-cyan-sm">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-500 to-blue-600 flex items-center justify-center text-slate-950 font-bold text-sm glow-primary-sm">
                 {currentUser.fullname.substring(0, 2).toUpperCase()}
               </div>
             )}

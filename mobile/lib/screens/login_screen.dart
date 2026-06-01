@@ -88,9 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     // Custom dark theme color palette matching desktop charcoal design
-    const backgroundColor = Color(0xFF0F172A);
-    const cardColor = Color(0xFF1E293B);
-    const primaryColor = Color(0xFF06B6D4);
+    const backgroundColor = Color(0xFF0B132B);
+    const cardColor = Color(0xFF1C2541);
+    const primaryColor = Color(0xFFD4AF37);
     const errorColor = Color(0xFFEF4444);
 
     return Scaffold(
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: cardColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
-                      side: const BorderSide(color: Color(0xFF334155), width: 1),
+                      side: const BorderSide(color: Color(0xFF2A344E), width: 1),
                     ),
                     elevation: 8,
                     child: Padding(
@@ -199,11 +199,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               fillColor: backgroundColor.withOpacity(0.4),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(color: Color(0xFF334155)),
+                                borderSide: const BorderSide(color: Color(0xFF2A344E)),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(color: Color(0xFF334155)),
+                                borderSide: const BorderSide(color: Color(0xFF2A344E)),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -228,11 +228,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               fillColor: backgroundColor.withOpacity(0.4),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(color: Color(0xFF334155)),
+                                borderSide: const BorderSide(color: Color(0xFF2A344E)),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(color: Color(0xFF334155)),
+                                borderSide: const BorderSide(color: Color(0xFF2A344E)),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -249,7 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: _loading ? null : _handleLogin,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: primaryColor,
-                              foregroundColor: const Color(0xFF0F172A),
+                              foregroundColor: const Color(0xFF0B132B),
                               disabledBackgroundColor: primaryColor.withOpacity(0.4),
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
@@ -263,7 +263,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     width: 20,
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
-                                      color: Color(0xFF0F172A),
+                                      color: Color(0xFF0B132B),
                                     ),
                                   )
                                 : const Text(
@@ -330,7 +330,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fillColor: backgroundColor.withOpacity(0.3),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide: const BorderSide(color: Color(0xFF334155)),
+                                    borderSide: const BorderSide(color: Color(0xFF2A344E)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
