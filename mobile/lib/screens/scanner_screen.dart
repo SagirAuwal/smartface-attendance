@@ -6,7 +6,8 @@ import '../services/api_service.dart';
 import 'login_screen.dart';
 
 class ScannerScreen extends StatefulWidget {
-  const ScannerScreen({super.key});
+  final bool active;
+  const ScannerScreen({super.key, this.active = true});
 
   @override
   State<ScannerScreen> createState() => _ScannerScreenState();
@@ -38,7 +39,9 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
-    _requestCameraPermission();
+    if (widget.active) {
+      _requestCameraPermission();
+    }
     _fetchCourses();
 
     _animationController = AnimationController(
@@ -196,6 +199,22 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant ScannerScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.active != oldWidget.active) {
+      if (widget.active) {
+        _requestCameraPermission();
+      } else {
+        _cameraController?.dispose();
+        _cameraController = null;
+        setState(() {
+          _cameraInitialized = false;
+        });
+      }
     }
   }
 
@@ -504,10 +523,6 @@ class _ScannerScreenState extends State<ScannerScreen> with SingleTickerProvider
   }
 }
 
-// Custom Extension to style ElevatedButton chain easily
-extension _ElevatedButtonStyleExtension on ButtonStyle {
-  ButtonStyle let(ButtonStyle Function(ButtonStyle) action) => action(this);
-}
 
 // Painter for drawing scan alignment visual guides and a laser animation line
 class ScannerOverlayPainter extends CustomPainter {
@@ -536,10 +551,6 @@ class ScannerOverlayPainter extends CustomPainter {
       const Radius.circular(24),
     );
 
-    // Draw dark shaded outer layers
-    final path = Path()
-      ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
-      ..addRRect(rrect);
       
     canvas.drawPath(
       Path.combine(

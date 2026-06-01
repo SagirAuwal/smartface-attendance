@@ -131,4 +131,268 @@ class ApiService {
     
     return data;
   }
+
+  static Future<List<Map<String, dynamic>>> getLecturers() async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/lecturers');
+    
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    final List<dynamic> list = json.decode(response.body);
+    return list.map((item) => item as Map<String, dynamic>).toList();
+  }
+
+  static Future<Map<String, dynamic>> createLecturer({
+    required String fullname,
+    required String email,
+    required String department,
+    required String courseCode,
+    required String courseName,
+    required String password,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/lecturers');
+    
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'fullname': fullname,
+        'email': email,
+        'department': department,
+        'course_code': courseCode,
+        'course_name': courseName,
+        'password': password,
+      }),
+    );
+    
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    return json.decode(response.body) as Map<String, dynamic>;
+  }
+
+  static Future<void> deleteLecturer(int id) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/lecturers/$id');
+    
+    final response = await http.delete(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> getStudents() async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/students');
+    
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    final List<dynamic> list = json.decode(response.body);
+    return list.map((item) => item as Map<String, dynamic>).toList();
+  }
+
+  static Future<Map<String, dynamic>> createStudent({
+    required String fullname,
+    required String email,
+    required String matricNumber,
+    required String department,
+    required String level,
+    required String password,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/students');
+    
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'fullname': fullname,
+        'email': email,
+        'matric_number': matricNumber,
+        'department': department,
+        'level': level,
+        'password': password,
+      }),
+    );
+    
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    return json.decode(response.body) as Map<String, dynamic>;
+  }
+
+  static Future<void> deleteStudent(int id) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/students/$id');
+    
+    final response = await http.delete(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+  }
+
+  static Future<Map<String, dynamic>> registerStudentFace({
+    required int studentId,
+    required Uint8List imageBytes,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/students/$studentId/register-face');
+    
+    final request = http.MultipartRequest('POST', url)
+      ..headers['Authorization'] = 'Bearer $token'
+      ..files.add(http.MultipartFile.fromBytes(
+        'file',
+        imageBytes,
+        filename: 'face.jpg',
+      ));
+      
+    final streamedResponse = await request.send().timeout(const Duration(seconds: 15));
+    final response = await http.Response.fromStream(streamedResponse);
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    return json.decode(response.body) as Map<String, dynamic>;
+  }
+
+  static Future<Map<String, dynamic>> createCourse({
+    required String courseCode,
+    required String courseName,
+    required int lecturerId,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/courses');
+    
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'course_code': courseCode,
+        'course_name': courseName,
+        'lecturer_id': lecturerId,
+      }),
+    );
+    
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    return json.decode(response.body) as Map<String, dynamic>;
+  }
+
+  static Future<List<Map<String, dynamic>>> getAttendanceLogs({
+    int? courseId,
+    int? studentId,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    
+    String query = '';
+    if (courseId != null || studentId != null) {
+      final List<String> params = [];
+      if (courseId != null) params.add('course_id=$courseId');
+      if (studentId != null) params.add('student_id=$studentId');
+      query = '?' + params.join('&');
+    }
+    
+    final url = Uri.parse('$baseUrl/api/attendance$query');
+    
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    final List<dynamic> list = json.decode(response.body);
+    return list.map((item) => item as Map<String, dynamic>).toList();
+  }
+
+  static Future<List<Map<String, dynamic>>> getReportsStats() async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    final url = Uri.parse('$baseUrl/api/reports/stats');
+    
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+    
+    if (response.statusCode != 200) {
+      throw Exception(_parseError(response.body));
+    }
+    
+    final List<dynamic> list = json.decode(response.body);
+    return list.map((item) => item as Map<String, dynamic>).toList();
+  }
+
+  static String _parseError(String body) {
+    try {
+      final err = json.decode(body);
+      return err['detail'] ?? 'Request failed';
+    } catch (_) {
+      return 'Request failed with server error';
+    }
+  }
 }

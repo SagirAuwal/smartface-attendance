@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
-import 'scanner_screen.dart';
+import 'home_container_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,13 +37,13 @@ class _LoginScreenState extends State<LoginScreen> {
     final token = await ApiService.getToken();
     final user = await ApiService.getCurrentUser();
     if (token != null && user != null) {
-      _navigateToScanner();
+      _navigateToHome();
     }
   }
 
-  void _navigateToScanner() {
+  void _navigateToHome() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const ScannerScreen()),
+      MaterialPageRoute(builder: (context) => const HomeContainerScreen()),
     );
   }
 
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _passwordController.text,
       );
 
-      _navigateToScanner();
+      _navigateToHome();
     } catch (e) {
       setState(() {
         _errorMessage = e.toString().replaceAll('Exception:', '').trim();
