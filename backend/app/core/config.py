@@ -15,7 +15,7 @@ class Settings:
     # AI Engine
     # 'real' or 'mock'
     AI_ENGINE_MODE: str = os.getenv("AI_ENGINE_MODE", "real")
-    RECOGNITION_THRESHOLD: float = float(os.getenv("RECOGNITION_THRESHOLD", "0.65"))
+    RECOGNITION_THRESHOLD: float = float(os.getenv("RECOGNITION_THRESHOLD", "0.60"))
     
     # CORS
     BACKEND_CORS_ORIGINS: list[str] = ["http://localhost:3001", "http://127.0.0.1:3001"]

@@ -71,9 +71,12 @@ class AIEngine:
             cv_img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
             gray = cv2.cvtColor(cv_img, cv2.COLOR_BGR2GRAY)
             
-            # Detect faces
+            # Apply Histogram Equalization to normalize illumination/contrast for robust Haar detection
+            gray = cv2.equalizeHist(gray)
+            
+            # Detect faces with more granular scale factor (1.05) and forgiving neighbors (4) for webcam/low-light stability
             detector = get_face_detector()
-            faces = detector.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+            faces = detector.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=4, minSize=(30, 30))
             
             if len(faces) == 0:
                 logger.warning("No face detected in the image")
@@ -82,9 +85,9 @@ class AIEngine:
             # Take the largest face (assuming it's the subject)
             x, y, w, h = max(faces, key=lambda f: f[2] * f[3])
             
-            # Apply padding margin around the crop box to capture broader face context (e.g. 10% of width/height)
-            margin_x = int(w * 0.1)
-            margin_y = int(h * 0.1)
+            # Apply a 15% padding margin to capture full facial features (chin, forehead) matching FaceNet profile
+            margin_x = int(w * 0.15)
+            margin_y = int(h * 0.15)
             
             img_w, img_h = image.size
             crop_x1 = max(0, x - margin_x)
