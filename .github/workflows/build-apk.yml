@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -56,3 +58,13 @@ jobs:
         with:
           name: app-release-apk
           path: mobile/build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "mobile/build/app/outputs/flutter-apk/app-release.apk"
+          tag: "v1.0.0-build-${{ github.run_number }}"
+          name: "SmartFace Mobile Build #${{ github.run_number }}"
+          body: "Automated build of the SmartFace Attendance System Flutter mobile app with front/rear camera toggle."
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
