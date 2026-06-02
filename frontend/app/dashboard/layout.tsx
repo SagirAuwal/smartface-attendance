@@ -78,7 +78,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       name: "Overview",
       href: "/dashboard",
       icon: LayoutDashboard,
-      roles: ["admin", "lecturer", "student"],
+      roles: ["admin", "sub_admin", "lecturer", "student"],
     },
     {
       name: "Face Scanner",
@@ -102,13 +102,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       name: "Attendance Reports",
       href: "/dashboard/reports",
       icon: BarChart2,
-      roles: ["admin", "lecturer", "student"], // All can view relevant reports
+      roles: ["admin", "sub_admin", "lecturer", "student"], // All can view relevant reports
     },
     {
       name: "Settings",
       href: "/dashboard/settings",
       icon: SettingsIcon,
-      roles: ["admin", "lecturer", "student"],
+      roles: ["admin", "sub_admin", "lecturer", "student"],
     },
   ];
 
