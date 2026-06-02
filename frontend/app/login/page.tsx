@@ -55,7 +55,7 @@ export default function Login() {
       // Enforce separated role access based on active tab
       const loggedInUser = api.getCurrentUser();
       if (loggedInUser) {
-        if (activeTab === "admin" && loggedInUser.role !== "admin") {
+        if (activeTab === "admin" && loggedInUser.role !== "admin" && loggedInUser.role !== "sub_admin") {
           api.logout();
           setError("This account does not have administrator privileges. Please use the Lecturer Portal tab.");
           setLoading(false);
